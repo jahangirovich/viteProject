@@ -1,15 +1,4 @@
-
-<template>
-<div>
-   <h1>{{ msg }}</h1>
-   <span>{{ res}} </span>
-   <v-btn
-      elevation="2"
-    >Say hi</v-btn>
-</div>
-</template>
-
-<script lang="ts">
+<script>
 import { ref } from '@vue/composition-api'
   export default{
     setup(){
@@ -26,6 +15,15 @@ import { ref } from '@vue/composition-api'
   }
 </script>
 
+<template>
+<div>
+   <h1>{{ msg }}</h1>
+   <span>{{ res}} </span>
+   <v-btn
+      elevation="2"
+    >Say hi</v-btn>
+</div>
+</template>
 <style scoped>
 a {
   color: #42b983;
