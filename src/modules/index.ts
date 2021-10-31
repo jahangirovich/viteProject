@@ -9,7 +9,6 @@ export interface ModuleProp {
   store: Store<unknown>
   router: Router
 }
-
 export default ({ app, store, router }: ModuleProp) => {
   GlobalComponents(app)
   UsePlugins(app)
