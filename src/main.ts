@@ -23,7 +23,7 @@ Vue.config.productionTip = false
 const app = createApp({
   router,
   store,
-  Vuetify,
+  vuetify: Vuetify,
   render: () => h(App),
 })
 

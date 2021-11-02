@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Auth from '../layouts/Auth/'
+import Auth from '../layouts/Auth/index.vue'
 import Login from '../layouts/Auth/Login.vue'
 import Registration from '../layouts/Auth/Registration.vue'
 
@@ -22,8 +22,12 @@ const routes = [
         path: 'registration',
         name: 'registration',
         component: Registration,
-      }
+      },
     ],
+  },
+  {
+    path: '/',
+    redirect: '/auth/login',
   },
 ]
 
