@@ -1,5 +1,4 @@
 .main{
-    background-color: map-get($theme-colors, 'blue');
     .container{
         height: 100%;
     }
@@ -31,5 +30,33 @@
             bottom: 0
         }
     }
+
+    &_desktop-block{
+        height: 100%;
+        &>div{
+            height: 100%;
+        }
+        &_leftSide{
+            width: 35%;
+            background-color: map-get($theme-colors, 'blue');
+            .logo{
+                width: 305px;
+                height: 160px;
+            }
+        }
+        &_rightSide{
+            width: 65%;
+            &_content{
+                width: 396px;
+            }
+        }
+    }
 }
 
+@media screen and (min-width: 768px) {
+    .main{
+        &_mobile-block{
+            display: none;
+        }
+    }
+}
