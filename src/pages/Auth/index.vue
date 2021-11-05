@@ -67,11 +67,11 @@
               <v-img :src="require('../../assets/auth/cowmasBanner.png')"></v-img>
             </div>
             <div class="main_footer align-content-end text-left">
-              <h2 class="font-600 text-14px white--text uppercase mt-sm-9 mb-sm-5">
+              <h2 class="font-600 text-14px white--text uppercase">
                 Техническая поддержка
               </h2>
-              <div class="phone my-sm-3">+7 (707) 902-34-56</div>
-              <div class="phone underline my-sm-3">support.cowmas.com</div>
+              <div class="phone my-1">+7 (707) 902-34-56</div>
+              <div class="phone underline">support.cowmas.com</div>
             </div>
           </div>
           <div class="main_desktop-block_rightSide justify-center d-flex">

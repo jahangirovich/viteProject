@@ -39,6 +39,7 @@
         &_leftSide{
             width: 35%;
             background-color: map-get($theme-colors, 'blue');
+            // fixed logo size for left hand side
             .logo{
                 width: 305px;
                 height: 160px;
