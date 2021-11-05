@@ -1,0 +1,35 @@
+.main{
+    background-color: map-get($theme-colors, 'blue');
+    .container{
+        height: 100%;
+    }
+    // auth header styling
+    &_auth-header{
+        .v-image{
+            width: 141px;
+            margin: 0 auto;
+            height: 74px;
+        }
+        &>div{
+            margin: 0 auto;
+        }
+    }
+    // set color white to footer of auth 
+    &_footer{
+        margin-top: auto;
+        color: map-get($theme-colors, 'white');
+    }
+    // add gray color of slider tabs of auth
+    .v-slide-group__content{
+        &:after{
+            content: "";
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: map-get($theme-colors, 'borders');
+            bottom: 0
+        }
+    }
+}
+

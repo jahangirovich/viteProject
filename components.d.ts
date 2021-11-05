@@ -4,8 +4,6 @@
 
 declare module 'vue' {
   export interface GlobalComponents {
-    ButtonOne: typeof import('D:/works-directory/vue projects/vite-vue2-typescript/src/components/Global/ButtonOne.vue')['default']
-    ButtonTwo: typeof import('D:/works-directory/vue projects/vite-vue2-typescript/src/components/Global/ButtonTwo.vue')['default']
     Navbar: typeof import('D:/works-directory/vue projects/vite-vue2-typescript/src/components/Navbar.vue')['default']
   }
 }

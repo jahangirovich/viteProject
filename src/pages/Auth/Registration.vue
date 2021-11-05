@@ -1,13 +1,25 @@
 <template>
   <v-form class="mx-4 my-6">
     <div class="mb-4">
-      <v-text-field label="Имя*" type="text" outlined hide-details="auto" />
+      <v-text-field color="blue" label="Имя*" type="text" outlined hide-details="auto" />
     </div>
     <div class="mb-4">
-      <v-text-field label="Фамилия*" type="text" outlined hide-details="auto" />
+      <v-text-field
+        color="blue"
+        label="Фамилия*"
+        type="text"
+        outlined
+        hide-details="auto"
+      />
     </div>
     <div class="mb-4">
-      <v-text-field label="Email*" type="email" outlined hide-details="auto" />
+      <v-text-field
+        color="blue"
+        label="Почта*"
+        type="email"
+        outlined
+        hide-details="auto"
+      />
     </div>
     <div class="mb-4">
       <v-text-field
@@ -16,7 +28,8 @@
         :type="show1 ? 'text' : 'password'"
         name="password"
         hide-details="auto"
-        label="Password"
+        color="blue"
+        label="Придумайте пароль*"
         outlined
         @click:append="show1 = !show1"
       ></v-text-field>
@@ -29,16 +42,16 @@
     </div>
     <v-btn
       type="submit"
-      class="bg-blue rounded-lg"
+      class="rounded-lg white--text mt-2"
       large
-      color="primary"
+      color="blue"
       depressed
       width="100%"
     >
       Зарегистрироваться
     </v-btn>
-    <div class="link mt-6 text-center">
-      <router-link to="/">Есть аккаунт? Войти </router-link>
+    <div class="text-decoration-underline text--blue mt-6 text-center">
+      <router-link to="/" class="blue--text text-14px">Есть аккаунт? Войти </router-link>
     </div>
   </v-form>
 </template>
@@ -52,6 +65,6 @@ export default defineComponent({
       show1: false,
       password: '',
     }
-  }
+  },
 })
 </script>

@@ -6,10 +6,39 @@ export default defineConfig({
   darkMode: 'class',
   // https://windicss.org/posts/v30.html#attributify-mode
   attributify: true,
+  // important: true,
 
   plugins: [typography()],
   theme: {
     extend: {
+      fontSize: {
+        '14px': '14px',
+        '12px': '12px',
+        '16px': '16px',
+        '18px': '18px',
+        '20px': '20px',
+        '22px': '22px',
+        '24px': '24px',
+        '26px': '26px',
+        '30px': '30px',
+      },
+      colors: {
+        blue: '#197DD9',
+        blue2: '#00BCEA',
+        primary: '#051F37',
+        dividers: '#242E50',
+        gray_secondary: '#888C96',
+        gray: '#C2C2C2',
+        input_borders: '#D7D7D7',
+        borders: '#E7E7E7',
+        bg: '#F1F2F5',
+        bg2: '#EFF8FF',
+        white: 'white',
+        success: '#19A627',
+        success_bg: '#D8F4DB',
+        error: '#D91919',
+        error_bg: '#FED7D7',
+      },
       typography: {
         DEFAULT: {
           css: {
