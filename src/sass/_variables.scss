@@ -23,6 +23,15 @@ $theme-colors: (
   box-sizing: border-box;
 }
 
+// change border color 
+.v-text-field--outlined >>> fieldset {
+  border-color: rgba(192, 0, 250, 0.986);
+}
+
+.v-tabs-bar.v-tabs-bar--is-mobile .v-tab {
+  margin-top: 10px !important;
+}
+
 // body color
 body{
   background-color: map-get($theme-colors, "blue");

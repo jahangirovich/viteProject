@@ -5,6 +5,7 @@
 declare module 'vue' {
   export interface GlobalComponents {
     Navbar: typeof import('D:/works-directory/vue projects/vite-vue2-typescript/src/components/Navbar.vue')['default']
+    Sidebar: typeof import('D:/works-directory/vue projects/vite-vue2-typescript/src/components/Sidebar.vue')['default']
   }
 }
 

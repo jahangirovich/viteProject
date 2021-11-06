@@ -11,7 +11,7 @@
               в животноводстве
             </div>
           </div>
-          <div class="rounded-lg shadow-md overflow-hidden main_body">
+          <v-card class="rounded-lg shadow-md overflow-hidden main_body">
             <v-tabs v-model="model" centered fixed-tabs>
               <v-tabs-slider class="blue"></v-tabs-slider>
               <v-tab
@@ -32,7 +32,7 @@
                 </transition>
               </v-tab-item>
             </v-tabs-items>
-          </div>
+          </v-card>
           <div class="main_footer align-content-end text-center">
             <h2 class="font-600 text-14px white--text uppercase mt-sm-9 mb-sm-5">
               Техническая поддержка
@@ -70,8 +70,8 @@
               <h2 class="font-600 text-14px white--text uppercase">
                 Техническая поддержка
               </h2>
-              <div class="phone my-1">+7 (707) 902-34-56</div>
-              <div class="phone underline">support.cowmas.com</div>
+              <div class="phone text-14px my-1">+7 (707) 902-34-56</div>
+              <div class="phone text-14px underline">support.cowmas.com</div>
             </div>
           </div>
           <div class="main_desktop-block_rightSide justify-center d-flex">
@@ -148,7 +148,7 @@ export default defineComponent({
 })
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import '../../sass/variables.scss';
 @import '../../sass/auth.scss';
 </style>
