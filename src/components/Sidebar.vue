@@ -10,7 +10,7 @@
       <div class="d-flex flex-col" style="height: 100%">
         <div class="text-center">
           <v-img
-            :src="require('../assets/main/sidebar/second_logo.svg')"
+            :src="require('../assets/main/sidebar/second_logo.png')"
             width="96"
             height="96"
             class="mx-auto my-4"

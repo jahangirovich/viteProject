@@ -7,6 +7,7 @@ declare module 'vue' {
     Analytics: typeof import('D:/works-directory/vue projects/vite-vue2-typescript/src/components/icons/analytics.vue')['default']
     Animals: typeof import('D:/works-directory/vue projects/vite-vue2-typescript/src/components/icons/animals.vue')['default']
     Calendar: typeof import('D:/works-directory/vue projects/vite-vue2-typescript/src/components/icons/calendar.vue')['default']
+    CustomSidebar: typeof import('D:/works-directory/vue projects/vite-vue2-typescript/src/components/CustomSidebar.vue')['default']
     Navbar: typeof import('D:/works-directory/vue projects/vite-vue2-typescript/src/components/Navbar.vue')['default']
     Operations: typeof import('D:/works-directory/vue projects/vite-vue2-typescript/src/components/icons/operations.vue')['default']
     Settings: typeof import('D:/works-directory/vue projects/vite-vue2-typescript/src/components/icons/settings.vue')['default']

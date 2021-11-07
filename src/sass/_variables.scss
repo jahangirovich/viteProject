@@ -37,3 +37,8 @@ $theme-colors: (
 body{
   background-color: map-get($theme-colors, "blue");
 }
+
+.v-breadcrumbs__item {
+  font-size: 12px !important;
+  color: map-get($theme-colors, 'gray_secondary' ) !important
+}
