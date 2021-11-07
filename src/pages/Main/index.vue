@@ -1,9 +1,11 @@
 <template>
   <v-app>
-    <mySidebar />
-    <transition name="fade" mode="out-in">
-      <router-view :key="$route.path"></router-view>
-    </transition>
+    <v-main class="bg-bg">
+      <customSidebar />
+      <transition name="fade" mode="out-in">
+        <router-view :key="$route.path"></router-view>
+      </transition>
+    </v-main>
   </v-app>
 </template>
 
@@ -12,7 +14,9 @@ import Sidebar from '../../components/Sidebar.vue'
 export default {
   name: 'home',
   components: {
-    mySidebar: Sidebar,
+    customSidebar: Sidebar,
   },
 }
 </script>
+
+<style lang="scss" scoped></style>

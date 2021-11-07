@@ -8,6 +8,7 @@ $theme-colors: (
   "gray_secondary": #888C96,
   "gray" : #C2C2C2,
   "input_borders": #D7D7D7,
+  "navigation_background": #062D4D,
   "borders": #E7E7E7,
   "bg": #F1F2F5,
   "bg2" : #EFF8FF,
@@ -18,14 +19,14 @@ $theme-colors: (
   "error_bg": #FED7D7
 );
 
+@font-face {
+  font-family: 'Poppins';
+  src: url('../assets/font/AvantGardeGothicC-Book.otf') format('truetype');
+}
+
 *{
   font-family: 'Poppins', sans-serif !important;
   box-sizing: border-box;
-}
-
-// change border color 
-.v-text-field--outlined >>> fieldset {
-  border-color: rgba(192, 0, 250, 0.986);
 }
 
 .v-tabs-bar.v-tabs-bar--is-mobile .v-tab {

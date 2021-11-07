@@ -137,9 +137,6 @@ export default defineComponent({
 
     return { items }
   },
-  mounted() {
-    console.log(this.$vuetify.breakpoint.name)
-  },
   data() {
     return {
       model: this.$route.path.name,
