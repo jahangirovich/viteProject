@@ -21,15 +21,11 @@
           </h2>
           <v-divider></v-divider>
         </div>
-        <v-list shaped>
-          <v-list-item-group v-model="selectedItem" class="mb-2">
-            <v-list-item
-              v-for="(item, i) in items"
-              :key="i"
-              color="navigation_background"
-            >
+        <v-list>
+          <v-list-item-group v-model="selectedItem" active-class="bg-active" class="mb-2">
+            <v-list-item v-for="(item, i) in items" :key="i">
               <v-list-item-icon>
-                <v-icon class="gray_secondary--text" v-text="item.icon"></v-icon>
+                <v-icon v-text="item.icon"></v-icon>
               </v-list-item-icon>
               <v-list-item-content>
                 <v-list-item-title
@@ -38,26 +34,15 @@
                 ></v-list-item-title>
               </v-list-item-content>
             </v-list-item>
-          </v-list-item-group>
-          <v-divider></v-divider>
-          <v-list-item-group color="white" class="mt-2">
-            <v-list-item
-              v-for="(item, i) in [
-                { icon: '$vuetify.icons.settings', text: 'Настройки' },
-              ]"
-              :key="i"
-            >
+            <v-divider></v-divider>
+            <v-list-item>
               <v-list-item-icon>
-                <v-icon
-                  class="gray_secondary--text text-14px"
-                  v-text="item.icon"
-                ></v-icon>
+                <v-icon>$vuetify.icons.settings</v-icon>
               </v-list-item-icon>
               <v-list-item-content>
-                <v-list-item-title
-                  class="white--text text-14px"
-                  v-text="item.text"
-                ></v-list-item-title>
+                <v-list-item-title class="white--text text-14px">
+                  Настройки</v-list-item-title
+                >
               </v-list-item-content>
             </v-list-item>
           </v-list-item-group>
@@ -103,5 +88,27 @@ export default defineComponent({
 // set sidebar divider color
 .theme--light.v-navigation-drawer .v-divider {
   border-color: map-get($theme-colors, 'dividers') !important;
+}
+
+// set padding to breadcrump
+.v-breadcrumbs li:nth-child(2n) {
+  padding: 0 3px;
+}
+
+.bg-active {
+  background-color: map-get($theme-colors, 'navigation_background') !important;
+  color: white !important;
+  border-left: 4px solid map-get($theme-colors, 'blue');
+  overflow: hidden;
+
+  border-bottom-right-radius: 8px !important;
+  border-top-right-radius: 8px !important;
+  .v-list-item__icon {
+    svg {
+      path {
+        fill: map-get($theme-colors, 'blue') !important;
+      }
+    }
+  }
 }
 </style>
