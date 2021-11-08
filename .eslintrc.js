@@ -2,43 +2,67 @@ module.exports = {
   root: true,
   env: {
     node: true,
-    browser: true,
   },
   extends: [
+    'plugin:vue/essential',
     'eslint:recommended',
-    'plugin:vue/recommended',
     '@vue/typescript/recommended',
+    '@vue/prettier',
     '@vue/prettier/@typescript-eslint',
-    'prettier',
+    'plugin:@intlify/vue-i18n/recommended',
   ],
   parserOptions: {
     ecmaVersion: 2020,
+    sourceType: 'module',
   },
-  plugins: ['vue', 'prettier'],
-  // add your custom rules here
   rules: {
     'prettier/prettier': [
       'error',
-      {},
       {
-        usePrettierrc: true,
+        endOfLine: 'auto',
       },
     ],
-    'prefer-const': 2,
-    'no-console': 'off',
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-    'no-tabs': 'off',
-    'space-before-function-paren': 'off',
-    'no-unused-vars': ['error', { vars: 'all', args: 'none', ignoreRestSiblings: false }],
-    'vue/order-in-components': 'off',
-    'vue/no-v-html': 'off',
-    'vue/component-definition-name-casing': 'off',
-    'vue/attribute-hyphenation': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
-    '@typescript-eslint/ban-ts-comment': 'off',
-    '@typescript-eslint/no-empty-function': 'off',
-    '@typescript-eslint/no-this-alias': 'off',
-    '@typescript-eslint/no-unused-vars': 'off',
-    '@typescript-eslint/ban-types': 'off',
+    '@typescript-eslint/ban-ts-ignore': 'off',
+    '@typescript-eslint/no-explicit-any': 'warn',
+    '@typescript-eslint/camelcase': 'off',
+    'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+    'no-irregular-whitespace': 'off',
+    '@intlify/vue-i18n/no-raw-text': [
+      'warn',
+      {
+        ignoreNodes: ['md-icon', 'v-icon'],
+        ignorePattern: '^[-#:()&.!+“”•]+$',
+        ignoreText: ['EUR', 'HKD', 'USD'],
+        extensions: ['.ts', '.js', '.vue'],
+      },
+    ],
+    '@intlify/vue-i18n/no-unused-keys': [
+      'warn',
+      {
+        extensions: ['.ts', '.js', '.vue'],
+      },
+    ],
   },
+  settings: {
+    'vue-i18n': {
+      localeDir: './src/locales/locales/*.{json}',
+    },
+  },
+  overrides: [
+    {
+      files: ['**/__tests__/*.{j,t}s?(x)', '**/tests/unit/**/*.spec.{j,t}s?(x)'],
+      env: {
+        jest: true,
+      },
+    },
+    {
+      // enable the rule specifically for TypeScript files
+      files: ['*.ts', '*.tsx'],
+      rules: {
+        '@typescript-eslint/explicit-module-boundary-types': ['warn'],
+      },
+    },
+  ],
 }

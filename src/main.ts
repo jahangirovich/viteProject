@@ -1,30 +1,24 @@
 import Vue from 'vue'
-import VCA, { createApp, h } from '@vue/composition-api'
+import VCA from '@vue/composition-api'
+import i18n from './i18n'
 import router from './router'
-import AddModules from './modules/index'
 import store from './store'
 import App from './App.vue'
-import Vuetify from '../vuetify'
-
-// windicss layers
-import 'virtual:windi-base.css'
-import 'virtual:windi-components.css'
-// windicss utilities should be the last style import
-import 'virtual:windi-utilities.css'
-// windicss devtools support (dev only)
-import 'virtual:windi-devtools'
+import vuetify from '@/plugins/vuetify.js'
+import '@/plugins/vuelidate'
 
 Vue.use(VCA)
 
-AddModules({ app: Vue, store, router })
+Vue.config.productionTip = false
 
 Vue.config.productionTip = false
 
-const app = createApp({
+Vue.config.devtools = process.env.NODE_ENV === 'development'
+
+new Vue({
+  render: (h) => h(App),
   router,
   store,
-  vuetify: Vuetify,
-  render: () => h(App),
-})
-
-app.mount('#app')
+  vuetify,
+  i18n,
+}).$mount('#app')

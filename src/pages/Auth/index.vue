@@ -56,11 +56,10 @@
             "
           >
             <div class="text-center my-7">
-              <v-img :src="require('../../assets/auth/cowmas_logo.svg')" class="logo"> </v-img>
+              <v-img :src="require('../../assets/auth/cowmas_logo.svg')" class="logo">
+              </v-img>
               <div class="font-weight-light text-white text-left mt-5">
-                Платформа для мониторинга
-                и аналитики данных 
-                в животноводстве
+                Платформа для мониторинга и аналитики данных в животноводстве
               </div>
             </div>
             <div>
@@ -146,6 +145,6 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-@import '../../sass/variables.scss';
-@import '../../sass/auth.scss';
+@import '../../styles/variables';
+@import '../../styles/auth';
 </style>

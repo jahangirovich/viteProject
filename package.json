@@ -1,97 +1,75 @@
 {
-  "name": "vite-vue2-typescript",
+  "name": "cowmas-web-app",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
-    "postinstall": "husky install",
-    "dev": "vite",
-    "build": "vite build",
-    "lint": "eslint './src/**/*.{js,ts,tsx,vue,md}'",
-    "lint:fix": "eslint './src/**/*.{js,ts,tsx,vue,md}' --fix",
-    "format": "pretty-quick --staged --ignore-path .gitignore"
+    "serve": "vue-cli-service serve --port 3003",
+    "build-stage": "vue-cli-service build --mode staging",
+    "build": "vue-cli-service build",
+    "test:unit": "vue-cli-service test:unit",
+    "lint": "vue-cli-service lint",
+    "i18n:report": "vue-cli-service i18n:report --src './src/**/*.?(js|vue)' --locales './src/locales/**/*.json'",
+    "update-web-types": "vue-docgen-web-types",
+    "typescript-check": "tsc-files"
   },
+  "web-types": "./web-types.json",
   "dependencies": {
-    "-": "0.0.1",
-    "@vue/composition-api": "^1.0.0-rc.8",
-    "@vueuse/core": "^4.9.1",
-    "core-js": "^3.11.1",
+    "@vue/composition-api": "^0.5.0",
+    "axios": "^0.21.1",
+    "core-js": "^3.6.4",
+    "dayjs": "^1.10.7",
+    "register-service-worker": "^1.7.1",
     "vue": "^2.6.14",
-    "vue-router": "^3.5.1",
-    "vue2-helpers": "^1.1.3",
-    "vuetify": "^2.5.9",
-    "vuex": "^3.6.2"
+    "vue-i18n": "^8.17.3",
+    "vue-router": "^3.1.6",
+    "vuelidate": "^0.7.6",
+    "vuetify": "^2.5.13",
+    "vuex": "^3.6.2",
+    "vuex-composition-helpers": "^1.0.23"
   },
   "devDependencies": {
-    "@commitlint/cli": "^13.1.0",
-    "@commitlint/config-conventional": "^13.1.0",
-    "@mdi/font": "^6.4.95",
-    "@types/node": "^16.7.10",
-    "@typescript-eslint/eslint-plugin": "^4.22.0",
-    "@typescript-eslint/parser": "^4.22.0",
-    "@vue/compiler-sfc": "^3.2.4",
+    "@intlify/eslint-plugin-vue-i18n": "^0.15.0",
+    "@intlify/vue-i18n-loader": "^1.0.0",
+    "@types/jest": "^24.0.19",
+    "@types/vuelidate": "^0.7.15",
+    "@typescript-eslint/eslint-plugin": "~4.32.0",
+    "@typescript-eslint/parser": "~4.32.0",
+    "@vue/cli-plugin-babel": "~4.5.13",
+    "@vue/cli-plugin-eslint": "~4.5.13",
+    "@vue/cli-plugin-pwa": "~4.3.0",
+    "@vue/cli-plugin-router": "~4.5.13",
+    "@vue/cli-plugin-typescript": "~4.3.0",
+    "@vue/cli-plugin-unit-jest": "~4.3.0",
+    "@vue/cli-service": "~4.5.13",
     "@vue/eslint-config-prettier": "^6.0.0",
     "@vue/eslint-config-typescript": "^7.0.0",
-    "@vue/runtime-dom": "^3.2.4",
-    "commitlint-config-cz": "^0.13.2",
-    "cz-customizable": "^6.3.0",
+    "@vue/test-utils": "1.2.2",
+    "babel-plugin-import": "^1.13.3",
+    "babel-preset-vue": "^2.0.2",
     "deepmerge": "^4.2.2",
-    "eslint": "^7.25.0",
-    "eslint-config-prettier": "^8.3.0",
+    "eslint": "^7.32.0",
     "eslint-plugin-prettier": "^3.4.0",
-    "eslint-plugin-vue": "^7.9.0",
-    "husky": "^6.0.0",
+    "eslint-plugin-vue": "^6.2.2",
+    "exports-loader": "^3.0.0",
     "lint-staged": "^11.1.2",
-    "prettier": "^2.2.1",
-    "pretty-quick": "^3.1.1",
-    "sass": "^1.32.13",
-    "sass-loader": "^12.3.0",
-    "typescript": "^4.3.5",
-    "unplugin-vue-components": "^0.14.11",
-    "unplugin-vue2-script-setup": "^0.4.2",
-    "vite": "^2.2.3",
-    "vite-plugin-components": "^0.13.3",
-    "vite-plugin-inspect": "^0.2.2",
-    "vite-plugin-optimize-persist": "^0.0.5",
-    "vite-plugin-package-config": "^0.0.3",
-    "vite-plugin-pages": "^0.17.4",
-    "vite-plugin-style-import": "^1.1.1",
-    "vite-plugin-vue-layouts": "^0.3.1",
-    "vite-plugin-vue2": "^1.4.4",
-    "vite-plugin-windicss": "^1.2.7",
-    "vue-demi": "^0.7.5",
-    "vue-template-compiler": "^2.6.14",
-    "windicss": "^3.1.7"
+    "prettier": "^2.4.1",
+    "sass": "^1.43.4",
+    "sass-loader": "^10.2.0",
+    "tsc-files": "^1.1.2",
+    "tslib": "^2.3.1",
+    "typescript": "^4.4.3",
+    "vue-cli-plugin-i18n": "~1.0.1",
+    "vue-docgen-web-types": "^0.1.7",
+    "vue-template-compiler": "^2.6.11",
+    "vuetify-loader": "^1.7.3",
+    "windicss": "^3.2.1"
+  },
+  "gitHooks": {
+    "pre-commit": "tsc --noEmit && lint-staged"
   },
   "lint-staged": {
-    "**/**.{js,json,vue,ts}": [
-      "eslint --fix --ignore-path .gitignore",
-      "pretty-quick --staged --ignore-path .gitignore"
+    "*.{js,vue,ts}": [
+      "vue-cli-service lint"
     ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "config": {
-    "commitizen": {
-      "path": "node_modules/cz-customizable"
-    },
-    "cz-customizable": {
-      "config": "./.cz-config.js"
-    }
-  },
-  "vite": {
-    "optimizeDeps": {
-      "include": [
-        "@vue/composition-api",
-        "@vue/runtime-dom",
-        "vue",
-        "vue-router",
-        "vue2-helpers/vue-router",
-        "vuetify",
-        "vuetify/lib/util/colors",
-        "vuex"
-      ]
-    }
   }
 }

@@ -64,7 +64,6 @@
 import { defineComponent } from '@vue/composition-api'
 export default defineComponent({
   name: 'sidebar',
-  setup() {},
   data() {
     return {
       drawer: true,
@@ -83,7 +82,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
-@import '../sass/variables.scss';
+@import '../styles/variables';
 
 // set sidebar divider color
 .theme--light.v-navigation-drawer .v-divider {

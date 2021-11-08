@@ -19,7 +19,10 @@
           </v-breadcrumbs>
           <div class="d-flex align-center">
             <v-badge :content="'1'" :value="'1'" color="blue" overlap class="mr-5">
-              <v-img :src="require('../../assets/main/header/notification.svg')" class="relative right-2"/>
+              <v-img
+                :src="require('../../assets/main/header/notification.svg')"
+                class="relative right-2"
+              />
             </v-badge>
             <div>
               <v-avatar>

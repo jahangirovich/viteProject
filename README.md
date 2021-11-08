@@ -1,58 +1,72 @@
-# vite-vue2-typescript
+# cowmas vue-2 web repo
 
-Vite Vue2 typescript starter template using composition-api with Script Setup!
+# Enabled Vue CLI plugins
+* Babel
+* Typescript
+* PWA
+* Router
+* eslint
+* i18n
 
-## Features
+# Additional goodies
+* Composition API
+* Dockerfile
+* Axios
+* DayJS
 
-- 🗂 [File based routing](./src/pages)
+## Composition API
+Besides primary idea of composition api, to de-couple and organize business logic, this boilerplate is also using it to implement both global and local state managemenet stores.
+> Take a look at `src/store` dir for implementation, `UserDetails` and `Counter` components for usage.
 
-- 📦 [Global Components auto importing](./src/components/Global)
+## Data layer
+HTTP communication is done using Axios as HTTP client of choice, with abstractions in form of singleton API services.
 
-- 📑 [Layout system](./src/layouts)
+Services are using generics to map response to the appropriate model.
 
-- 😃 [Script Setup](https://github.com/antfu/vue2-script-setup-transform)
+DTOs are utilized to ensure that proper payload will be sent to the API services.
+> Take a look at `src/services/api`, `BaseApi` is a generic base class which all other services are inheriting.
 
-- 🎨 [Commitlint](./husky)
+> Models are defined in `src/models`, DTOs in `src/dto`.
+# Linting
+Eslint + Prettier
 
-- 🔥 TypeScript, of course
+# Git hooks
+* pre-commit - runs `yarn lint`
+* pre-push - runs `yarn test:unit`
 
-### Plugins
+# Development setup
+```shell script
+# Install dependencies
+yarn
 
-- [`vue/compositon-api`](https://github.com/vuejs/composition-api) Composition API plugin for Vue 2
+# Create an .env file
+cp .env.example .env
 
-- [`VueUse`](https://github.com/antfu/vueuse) - collection of useful composition APIs
-
-- [`vite-plugin-pages`](https://github.com/hannoeru/vite-plugin-pages) - file system based
-  routing
-
-- [`vite-plugin-vue-layouts`](https://github.com/anncwb/vite-plugin-style-import) Vue layout plugin for Vite
-
-- [`vite-plugin-style-import`](https://github.com/anncwb/vite-plugin-style-import) A plug-in
-  that imports component library styles on demand
-
-- [`vue2-helper`](https://github.com/ambit-tsai/vue2-helpers) - A util package to use Vue 2 with Composition API easily
-
-
-## Usage
-
-### Development
-
-Just run and visit http://localhost:3003
-
-```bash
-yarn dev
+# Start local development server with hot-reload
+yarn serve
 ```
 
-## Commit lint
+# Testing
+Both unit and e2e tests are enabled. Jest is used as a testing framework of choice for unit tests, cypress for e2e.
+* `yarn lint` - static analysis
 
-This repo use `commitizen` , if run `git cz` has no effect, you might need to install commitizen global as `yarn add global commitizen` or `npm i -g commitizen`
+# Production build
+Utilizing docker multi-stage build to firstly install dependencies and build the app, and then copy them to vanilla nginx image in order to minimze the footprint.
+> NGINX configuration file can be found in `.docker/nginx.conf`
+## How-to
+```shell script
+# Firstly, build the image
+docker build -t image-name .
 
-then use `git cz` to add commit information.
+# Run the container with port 80 exposed
+docker run --rm -p 80:80 image-name
+```
 
-At lint staged it will trigger eslint auto fix and use `pretty-quick` to format files.
-
-And enjoy!
-
-### Thanks
-
-- [vitesse](https://github.com/antfu/vitesse) Opinionated Vite Starter Template
+# CI
+Github actions are used for CI. Workflow is defined in `.github/workflows/test.yml`
+Workflow steps:
+* Setup environment (checkout, install node)
+* Create `.env` file
+* Install `npm` dependencies
+* Build the app
+~~* Run `unit` and `e2e` tests~~
