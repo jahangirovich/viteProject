@@ -4,15 +4,14 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve --port 3003",
-    "build-stage": "vue-cli-service build --mode staging",
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
+    "build-stage": "vue-cli-service build --mode staging",
     "i18n:report": "vue-cli-service i18n:report --src './src/**/*.?(js|vue)' --locales './src/locales/**/*.json'",
-    "update-web-types": "vue-docgen-web-types",
-    "typescript-check": "tsc-files"
+    "typescript-check": "tsc-files",
+    "update-web-types": "vue-docgen-web-types"
   },
-  "web-types": "./web-types.json",
   "dependencies": {
     "@vue/composition-api": "^0.5.0",
     "axios": "^0.21.1",
@@ -53,12 +52,13 @@
     "exports-loader": "^3.0.0",
     "lint-staged": "^11.1.2",
     "prettier": "^2.4.1",
-    "sass": "^1.43.4",
+    "sass": "1.32.13",
     "sass-loader": "^10.2.0",
     "tsc-files": "^1.1.2",
     "tslib": "^2.3.1",
     "typescript": "^4.4.3",
     "vue-cli-plugin-i18n": "~1.0.1",
+    "vue-cli-plugin-windicss": "~1.1.2",
     "vue-docgen-web-types": "^0.1.7",
     "vue-template-compiler": "^2.6.11",
     "vuetify-loader": "^1.7.3",
@@ -71,5 +71,6 @@
     "*.{js,vue,ts}": [
       "vue-cli-service lint"
     ]
-  }
+  },
+  "web-types": "./web-types.json"
 }

@@ -1,7 +1,7 @@
 
 // Main colors of project
 $theme-colors: (
-  "blue" : #197DD9,
+  "blue" : var(--color-accent),
   "blue2": #00BCEA,
   "primary": #051F37,
   "dividers": #242E50,
@@ -12,7 +12,7 @@ $theme-colors: (
   "borders": #E7E7E7,
   "bg": #F1F2F5,
   "bg2" : #EFF8FF,
-  "white": white,
+  "white": #FFFFFF,
   "success": #19A627,
   "success_bg": #D8F4DB,
   "error": #D91919,

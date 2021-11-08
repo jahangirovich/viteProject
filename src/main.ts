@@ -1,18 +1,15 @@
 import Vue from 'vue'
-import VCA from '@vue/composition-api'
 import i18n from './i18n'
 import router from './router'
 import store from './store'
 import App from './App.vue'
-import vuetify from '@/plugins/vuetify.js'
-import '@/plugins/vuelidate'
-
-Vue.use(VCA)
+import vuetify from './plugins/vuetify'
+import './plugins/vuelidate'
+import './plugins/composition-api'
+import 'windi.css'
+import './styles/main.scss'
 
 Vue.config.productionTip = false
-
-Vue.config.productionTip = false
-
 Vue.config.devtools = process.env.NODE_ENV === 'development'
 
 new Vue({

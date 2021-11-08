@@ -13,6 +13,12 @@ module.exports = {
       preflight: false,
     },
   },
+  chainWebpack: (config) => {
+    config.plugin('html').tap((args) => {
+      args[0].title = 'Cowmas App'
+      return args
+    })
+  },
 
   configureWebpack: {
     optimization: {

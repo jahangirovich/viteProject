@@ -4,7 +4,7 @@
       <v-container fluid class="main_mobile-block bg-blue">
         <div class="p-0 d-flex flex-col">
           <div class="main_auth-header main_header text-center my-7">
-            <v-img :src="require('../../assets/auth/cowmas_logo.svg')"> </v-img>
+            <v-img :src="require('@/assets/img/auth/cowmas_logo.svg')"> </v-img>
             <div class="font-weight-light text-white text-center mt-5">
               Платформа для мониторинга <br />
               и аналитики данных <br />
@@ -56,14 +56,18 @@
             "
           >
             <div class="text-center my-7">
-              <v-img :src="require('../../assets/auth/cowmas_logo.svg')" class="logo">
+              <v-img
+                :src="require('@/assets/img/auth/cowmas_logo.svg')"
+                alt="Cowmas"
+                class="logo"
+              >
               </v-img>
               <div class="font-weight-light text-white text-left mt-5">
                 Платформа для мониторинга и аналитики данных в животноводстве
               </div>
             </div>
             <div>
-              <v-img :src="require('../../assets/auth/cowmasBanner.png')"></v-img>
+              <v-img :src="require('@/assets/img/auth/cowmasBanner.png')"></v-img>
             </div>
             <div class="main_footer align-content-end text-left">
               <h2 class="font-600 text-14px white--text uppercase">
