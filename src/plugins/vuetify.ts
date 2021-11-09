@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuetify from 'vuetify/lib'
+import '@mdi/font/css/materialdesignicons.css' // Ensure you are using css-loader
 
 import analytics from '../components/icons/analytics.vue'
 import animals from '../components/icons/animals.vue'
@@ -38,8 +39,8 @@ const opts = {
   theme: {
     themes: {
       light: {
-        blue: '#197DD9',
-        blue2: '#00BCEA',
+        accent: '#197DD9',
+        accent_secondary: '#00BCEA',
         primary: '#051F37',
         dividers: '#242E50',
         gray_secondary: '#888C96',

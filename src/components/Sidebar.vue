@@ -97,7 +97,7 @@ export default defineComponent({
 .bg-active {
   background-color: map-get($theme-colors, 'navigation_background') !important;
   color: white !important;
-  border-left: 4px solid map-get($theme-colors, 'blue');
+  border-left: 4px solid map-get($theme-colors, 'accent');
   overflow: hidden;
 
   border-bottom-right-radius: 8px !important;
@@ -105,7 +105,7 @@ export default defineComponent({
   .v-list-item__icon {
     svg {
       path {
-        fill: map-get($theme-colors, 'blue') !important;
+        fill: map-get($theme-colors, 'accent') !important;
       }
     }
   }

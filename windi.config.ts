@@ -12,15 +12,15 @@ export default defineConfig({
   theme: {
     extend: {
       fontSize: {
-        '14px': '14px',
-        '12px': '12px',
-        '16px': '16px',
-        '18px': '18px',
-        '20px': '20px',
-        '22px': '22px',
-        '24px': '24px',
-        '26px': '26px',
-        '30px': '30px',
+        sm_: '12px',
+        xs_: '14px',
+        base_: '16px',
+        lg_: '18px',
+        xl_: '20px',
+        '2xl_': '22px',
+        '3xl_': '24px',
+        '4xl_': '26px',
+        '5xl_': '30px',
       },
       colors: {
         blue: '#197DD9',

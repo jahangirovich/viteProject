@@ -1,11 +1,17 @@
 <template>
   <v-form class="mx-4 my-6">
     <div class="mb-4">
-      <v-text-field color="blue" label="Имя*" type="text" outlined hide-details="auto" />
+      <v-text-field
+        color="accent"
+        label="Имя*"
+        type="text"
+        outlined
+        hide-details="auto"
+      />
     </div>
     <div class="mb-4">
       <v-text-field
-        color="blue"
+        color="accent"
         label="Фамилия*"
         type="text"
         outlined
@@ -14,7 +20,7 @@
     </div>
     <div class="mb-4">
       <v-text-field
-        color="blue"
+        color="accent"
         label="Почта*"
         type="email"
         outlined
@@ -28,7 +34,7 @@
         :type="show1 ? 'text' : 'password'"
         name="password"
         hide-details="auto"
-        color="blue"
+        color="accent"
         label="Придумайте пароль*"
         outlined
         @click:append="show1 = !show1"
@@ -44,14 +50,14 @@
       type="submit"
       class="rounded-lg white--text mt-2"
       large
-      color="blue"
+      color="accent"
       depressed
       width="100%"
     >
       Зарегистрироваться
     </v-btn>
-    <div class="text-decoration-underline text--blue mt-6 text-center">
-      <router-link to="/" class="blue--text text-14px">Есть аккаунт? Войти </router-link>
+    <div class="text-decoration-underline text--accent mt-6 text-center">
+      <router-link to="/" class="accent--text text-xs">Есть аккаунт? Войти </router-link>
     </div>
   </v-form>
 </template>

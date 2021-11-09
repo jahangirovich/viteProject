@@ -4,11 +4,6 @@
     }
     // auth header styling
     &_auth-header{
-        .v-image{
-            width: 141px;
-            margin: 0 auto;
-            height: 74px;
-        }
         &>div{
             margin: 0 auto;
         }
@@ -39,11 +34,6 @@
         &_leftSide{
             width: 35%;
             background-color: map-get($theme-colors, 'blue');
-            // fixed logo size for left hand side
-            .logo{
-                width: 305px;
-                height: 160px;
-            }
         }
         &_rightSide{
             width: 65%;
@@ -51,12 +41,28 @@
                 width: 396px;
             }
         }
+        // adaptive for tablet 
+        @media screen and (max-width: 1090px) and (min-width: 768px) {
+            &_leftSide{
+                width: 50%;
+            }
+            &_rightSide{
+                width: 50%;
+                &_content{
+                    width: 330px;
+                }
+            }
+        }
     }
 }
 
 // margin tabs bar like in figma
-.v-tabs-bar{
-    margin-top: 15px;
+// .auth .v-tabs-bar{
+//     margin-top: 15px;
+// }
+
+.v-tabs-bar .v-tab {
+    margin-top: 10px !important;
 }
 
 @media screen and (min-width: 768px) {

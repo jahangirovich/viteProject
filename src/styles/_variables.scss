@@ -1,8 +1,8 @@
 
 // Main colors of project
 $theme-colors: (
-  "blue" : var(--color-accent),
-  "blue2": #00BCEA,
+  "accent" : var(--color-accent),
+  "accent_secondary": #00BCEA,
   "primary": #051F37,
   "dividers": #242E50,
   "gray_secondary": #888C96,
@@ -19,18 +19,22 @@ $theme-colors: (
   "error_bg": #FED7D7
 );
 
-//@font-face {
-//  font-family: 'Poppins';
-//  src: url('../assets/font/AvantGardeGothicC-Book.otf') format('truetype');
-//}
+$material-light: (
+  'background': map-get($theme-colors, 'accent')
+);
+
+@font-face {
+ font-family: 'Poppins';
+ src: url('/assets/font/AvantGardeGothicC-Book.otf') format('truetype');
+}
 
 *{
   font-family: 'Poppins', sans-serif !important;
   box-sizing: border-box;
 }
 
-.v-tabs-bar.v-tabs-bar--is-mobile .v-tab {
-  margin-top: 10px !important;
+.theme--light.v-tabs > .v-tabs-bar{
+  background-color: transparent;
 }
 
 // body color

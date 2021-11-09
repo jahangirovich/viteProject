@@ -2,50 +2,38 @@
   <v-app>
     <v-main class="bg-bg">
       <sidebar />
-      <v-container class="content p-5">
-        <div class="header d-flex justify-between align-center">
-          <v-breadcrumbs :items="items" class="m-none p-0 pl-0">
-            <template v-slot:item="{ item }">
-              <v-breadcrumbs-item
-                :href="item.href"
-                :class="item.disabled ? '' : 'underline'"
-              >
-                {{ item.text }}
-              </v-breadcrumbs-item>
-            </template>
-            <template #divider>
-              <v-icon>mdi-chevron-right</v-icon>
-            </template>
-          </v-breadcrumbs>
-          <div class="d-flex align-center">
-            <v-badge :content="'1'" :value="'1'" color="blue" overlap class="mr-5">
-              <v-img
-                :src="require('../../assets/main/header/notification.svg')"
-                class="relative right-2"
-              />
-            </v-badge>
-            <div>
-              <v-avatar>
-                <img
-                  :src="require('../../assets/main/other/userProfile.png')"
-                  alt=""
-                  width="40px"
-                  height="40px"
-                />
-              </v-avatar>
-            </div>
-          </div>
+      <div class="content p-5">
+        <customHeader />
+        <div class="subheader">
+          <h2 class="mt-4">Животные</h2>
+          <v-tabs v-model="model" align-with-title class="mt-4 transparent">
+            <v-tabs-slider class="accent"></v-tabs-slider>
+            <v-tab
+              v-for="(item, i) in tabs"
+              :key="i"
+              :to="item.link"
+              :class="
+                $route.name === item.link_name
+                  ? 'mt-0 ml-0 accent--text'
+                  : 'mt-0 ml-0 gray_secondary--text'
+              "
+            >
+              <span class="font-600">{{ item.name }}</span>
+            </v-tab>
+          </v-tabs>
+          <v-tabs-items v-model="model">
+            <v-tab-item v-for="(item, i) in tabs" :key="i" :value="item.link">
+              <router-view :key="$route.path"></router-view>
+            </v-tab-item>
+          </v-tabs-items>
         </div>
-        <transition name="fade" mode="out-in">
-          <router-view :key="$route.path"></router-view>
-        </transition>
-      </v-container>
+      </div>
     </v-main>
   </v-app>
 </template>
 
 <script lang="ts">
-import Sidebar from '../../components/Sidebar.vue'
+import Sidebar from '@/components/Sidebar.vue'
 export default {
   components: { sidebar: Sidebar },
   data() {
@@ -62,6 +50,18 @@ export default {
           href: 'breadcrumbs_link_2',
         },
       ],
+      tabs: [
+        {
+          name: 'Список',
+          link: '/home/stalls',
+          link_name: 'stalls',
+        },
+        {
+          name: 'Группы',
+          link: '/auth/registration',
+          link_name: '',
+        },
+      ],
     }
   },
   name: 'home',
@@ -71,7 +71,11 @@ export default {
 <style lang="scss" scoped>
 .content {
   width: calc(100% - 256px);
-  margin-right: 0;
+  margin-left: auto;
+}
+
+.theme--light.v-tabs-items {
+  background-color: transparent !important;
 }
 @media screen and (max-width: 959px) {
   .content {

@@ -8,6 +8,7 @@ import './plugins/vuelidate'
 import './plugins/composition-api'
 import 'windi.css'
 import './styles/main.scss'
+import './global-components'
 
 Vue.config.productionTip = false
 Vue.config.devtools = process.env.NODE_ENV === 'development'
