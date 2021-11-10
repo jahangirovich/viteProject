@@ -13,6 +13,7 @@
     "update-web-types": "vue-docgen-web-types"
   },
   "dependencies": {
+    "@mdi/js": "^6.4.95",
     "@vue/composition-api": "^0.5.0",
     "axios": "^0.21.1",
     "core-js": "^3.6.4",
@@ -29,7 +30,6 @@
   "devDependencies": {
     "@intlify/eslint-plugin-vue-i18n": "^0.15.0",
     "@intlify/vue-i18n-loader": "^1.0.0",
-    "@mdi/font": "^6.4.95",
     "@types/jest": "^24.0.19",
     "@types/vuelidate": "^0.7.15",
     "@typescript-eslint/eslint-plugin": "~4.32.0",

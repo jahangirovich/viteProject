@@ -30,7 +30,7 @@
     <div class="mb-4">
       <v-text-field
         v-model="password"
-        :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
+        :append-icon="show1 ? mdiEye : mdiEyeOff"
         :type="show1 ? 'text' : 'password'"
         name="password"
         hide-details="auto"
@@ -63,6 +63,7 @@
 </template>
 <script lang="ts">
 import { defineComponent } from '@vue/composition-api'
+import { mdiEyeOff, mdiEye } from '@mdi/js'
 
 export default defineComponent({
   components: {},
@@ -70,6 +71,8 @@ export default defineComponent({
     return {
       show1: false,
       password: '',
+      mdiEyeOff,
+      mdiEye,
     }
   },
 })

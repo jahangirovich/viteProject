@@ -7,7 +7,7 @@
         </v-breadcrumbs-item>
       </template>
       <template #divider>
-        <v-icon>mdi-chevron-right</v-icon>
+        <v-icon small>{{ mdiChevronRight }}</v-icon>
       </template>
     </v-breadcrumbs>
     <div class="d-flex align-center">
@@ -28,7 +28,7 @@
                 <h3 class="text-14px">Фамилия Имя</h3>
                 <span class="text-12px gray_secondary--text">Администратор</span>
               </div>
-              <v-icon>mdi-chevron-down</v-icon>
+              <v-icon>{{ mdiChevronDown }}</v-icon>
             </div>
           </template>
           <v-list>
@@ -43,6 +43,8 @@
 </template>
 
 <script lang="ts">
+import { mdiChevronDown, mdiChevronRight } from '@mdi/js'
+
 export default {
   data() {
     return {
@@ -58,6 +60,8 @@ export default {
           href: 'breadcrumbs_link_2',
         },
       ],
+      mdiChevronDown,
+      mdiChevronRight,
       items2: [
         { title: 'Click Me' },
         { title: 'Click Me' },
@@ -69,3 +73,4 @@ export default {
   name: 'customHeader',
 }
 </script>
+<style scoped lang="scss"></style>

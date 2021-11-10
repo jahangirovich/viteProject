@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Vuetify from 'vuetify/lib'
-import '@mdi/font/css/materialdesignicons.css' // Ensure you are using css-loader
 
 import analytics from '../components/icons/analytics.vue'
 import animals from '../components/icons/animals.vue'
