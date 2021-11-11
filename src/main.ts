@@ -6,7 +6,7 @@ import App from './App.vue'
 import vuetify from './plugins/vuetify'
 import './plugins/vuelidate'
 import './plugins/composition-api'
-import 'windi.css'
+// import 'windi.css'
 import './styles/main.scss'
 import './global-components'
 

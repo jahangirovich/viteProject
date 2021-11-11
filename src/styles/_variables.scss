@@ -37,6 +37,10 @@ $material-light: (
   background-color: transparent;
 }
 
+.v-application--is-ltr .v-input__prepend-outer {
+  margin-right: 0 !important;
+}
+
 // body color
 body{
   background-color: map-get($theme-colors, "blue");

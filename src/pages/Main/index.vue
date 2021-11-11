@@ -2,7 +2,7 @@
   <v-app>
     <v-main class="bg-bg">
       <sidebar />
-      <div class="content p-5">
+      <div class="content pa-5">
         <customHeader />
         <div class="subheader">
           <h2 class="mt-4">Животные</h2>

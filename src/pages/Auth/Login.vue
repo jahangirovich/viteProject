@@ -18,7 +18,7 @@
         :type="show1 ? 'text' : 'password'"
         name="password"
         hide-details="auto"
-        label="Password"
+        label="Пароль"
         outlined
         @click:append="show1 = !show1"
       ></v-text-field>
@@ -34,7 +34,7 @@
       Войти
     </v-btn>
     <div class="text-decoration-underline text--accent mt-6 text-center">
-      <router-link to="/" class="accent--text text-xs"> Забыли пароль? </router-link>
+      <router-link to="/" class="accent--text text-body-2"> Забыли пароль? </router-link>
     </div>
   </v-form>
 </template>

@@ -23,9 +23,24 @@
         color="accent"
         label="Почта*"
         type="email"
+        :append-icon="mdiInformation"
         outlined
+        @click:append="showInfo = !showInfo"
         hide-details="auto"
-      />
+      >
+        <v-card
+          elevation="0"
+          left
+          class="ma-2 hintCard pa-2"
+          slot="prepend"
+          v-if="showInfo"
+        >
+          <span class="text-body-2 d-absolute">
+            Ваш электронный адрес будет<br />
+            использоваться как логин <br />для авторизации в системе
+          </span>
+        </v-card>
+      </v-text-field>
     </div>
     <div class="mb-4">
       <v-text-field
@@ -41,7 +56,13 @@
       ></v-text-field>
     </div>
     <div class="mb-4">
-      <v-text-field label="Номер телефона" type="text" outlined hide-details="auto" />
+      <v-text-field
+        label="Номер телефона"
+        type="text"
+        outlined
+        hide-details="auto"
+        :append-icon="mdiInformation"
+      />
     </div>
     <div class="mb-4">
       <v-text-field label="Организация" type="text" outlined hide-details="auto" />
@@ -57,13 +78,15 @@
       Зарегистрироваться
     </v-btn>
     <div class="text-decoration-underline text--accent mt-6 text-center">
-      <router-link to="/" class="accent--text text-xs">Есть аккаунт? Войти </router-link>
+      <router-link to="/" class="accent--text text-body-2"
+        >Есть аккаунт? Войти
+      </router-link>
     </div>
   </v-form>
 </template>
 <script lang="ts">
 import { defineComponent } from '@vue/composition-api'
-import { mdiEyeOff, mdiEye } from '@mdi/js'
+import { mdiEyeOff, mdiEye, mdiInformation } from '@mdi/js'
 
 export default defineComponent({
   components: {},
@@ -73,7 +96,21 @@ export default defineComponent({
       password: '',
       mdiEyeOff,
       mdiEye,
+      showInfo: false,
+      mdiInformation,
     }
   },
 })
 </script>
+
+<style scoped lang="scss">
+.hintCard {
+  position: absolute;
+  right: 10%;
+  top: -35%;
+  z-index: 1001;
+  background-color: rgb(239, 248, 255);
+  border: 1px solid var(--color-accent);
+  opacity: 1 !important;
+}
+</style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="header d-flex justify-between align-center">
+  <div class="header d-flex justify-space-between align-center">
     <v-breadcrumbs :items="items" class="m-none p-0 pl-0">
       <template v-slot:item="{ item }">
         <v-breadcrumbs-item :href="item.href" :class="item.disabled ? '' : 'underline'">
@@ -24,9 +24,9 @@
               <v-avatar>
                 <img src="@/assets/main/other/userProfile.png" alt="John" />
               </v-avatar>
-              <div class="d-flex flex-col ml-3 mr-2">
-                <h3 class="text-14px">Фамилия Имя</h3>
-                <span class="text-12px gray_secondary--text">Администратор</span>
+              <div class="d-flex flex-column ml-3 mr-2">
+                <h3 class="">Фамилия Имя</h3>
+                <span class="gray_secondary--text">Администратор</span>
               </div>
               <v-icon>{{ mdiChevronDown }}</v-icon>
             </div>

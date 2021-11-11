@@ -2,7 +2,7 @@
   <v-app>
     <v-main class="auth main">
       <v-container fluid class="main_mobile-block accent">
-        <div class="p-0 d-flex flex-col">
+        <div class="p-0 d-flex flex-column">
           <div class="main_auth-header main_header text-center my-7">
             <v-img
               :src="require('@/assets/img/auth/cowmas_logo.svg')"
@@ -11,7 +11,7 @@
               class="ma-auto"
             >
             </v-img>
-            <div class="font-weight-light text-white text-center mt-5">
+            <div class="font-weight-light white--text text-center mt-5">
               Платформа для мониторинга <br />
               и аналитики данных <br />
               в животноводстве
@@ -28,7 +28,7 @@
                   $route.name === item.link_name ? 'accent--text' : 'gray_secondary--text'
                 "
               >
-                <span class="font-600">{{ item.name }}</span>
+                <span class="font-weight-bold">{{ item.name }}</span>
               </v-tab>
             </v-tabs>
             <v-tabs-items v-model="model">
@@ -38,11 +38,15 @@
             </v-tabs-items>
           </v-card>
           <div class="main_footer align-content-end text-center">
-            <h2 class="font-600 text-xs white--text uppercase mt-sm-9 mb-sm-5">
+            <h2 class="font-weight-bold white--text text-body-2 uppercase mt-9 mb-1">
               Техническая поддержка
+              <br />
+              -
             </h2>
-            <div class="phone my-sm-3">+7 (707) 902-34-56</div>
-            <div class="phone underline my-sm-3">support.cowmas.com</div>
+            <div class="phone my-1 text-body-2">+7 (707) 902-34-56</div>
+            <div class="phone text-decoration-underline my-1 text-body-2">
+              support.cowmas.com
+            </div>
           </div>
         </div>
       </v-container>
@@ -55,8 +59,8 @@
               px-12
               pb-6
               d-flex
-              flex-col
-              justify-between
+              flex-column
+              justify-space-between
             "
           >
             <div class="text-center my-7">
@@ -68,7 +72,7 @@
                 height="160px"
               >
               </v-img>
-              <div class="font-weight-light text-white text-left mt-5">
+              <div class="font-weight-light white--text text-left mt-5">
                 Платформа для мониторинга и аналитики данных в животноводстве
               </div>
             </div>
@@ -76,11 +80,14 @@
               <v-img :src="require('@/assets/img/auth/cowmasBanner.png')"></v-img>
             </div>
             <div class="main_footer align-content-end text-left">
-              <h2 class="font-600 text-xs white--text uppercase">
-                Техническая поддержка
+              <h2 class="font-weight-bold text-body-2 white--text uppercase">
+                Техническая поддержка<br />
+                -
               </h2>
-              <div class="phone text-xs my-1">+7 (707) 902-34-56</div>
-              <div class="phone text-xs underline">support.cowmas.com</div>
+              <div class="phone text-body-2 my-1">+7 (707) 902-34-56</div>
+              <div class="phone text-body-2 text-decoration-underline">
+                support.cowmas.com
+              </div>
             </div>
           </div>
           <div class="main_desktop-block_rightSide justify-center d-flex">
@@ -108,7 +115,7 @@
                         : 'gray_secondary--text'
                     "
                   >
-                    <span class="font-600">{{ item.name }}</span>
+                    <span class="font-weight-bold">{{ item.name }}</span>
                   </v-tab>
                 </v-tabs>
                 <v-tabs-items v-model="model">
