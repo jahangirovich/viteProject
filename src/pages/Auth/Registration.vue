@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 <template>
   <v-form class="mx-4 my-6">
     <div class="mb-4">
@@ -28,18 +29,19 @@
         @click:append="showInfo = !showInfo"
         hide-details="auto"
       >
-        <v-card
-          elevation="0"
-          left
-          class="ma-2 hintCard pa-2"
-          slot="prepend"
-          v-if="showInfo"
-        >
-          <span class="text-body-2 d-absolute">
-            Ваш электронный адрес будет<br />
-            использоваться как логин <br />для авторизации в системе
-          </span>
-        </v-card>
+        <div class="text_wrapper" slot="prepend" v-if="showInfo">
+          <v-card elevation="0" left class="ma-2 hintCard pa-2" slot="prepend">
+            <div>
+              <span class="text-body-2 d-absolute">
+                Ваш электронный адрес будет<br />
+                использоваться как логин <br />для авторизации в системе
+              </span>
+            </div>
+          </v-card>
+          <div class="arrow_wrapper">
+            <div class="arrow-right"></div>
+          </div>
+        </div>
       </v-text-field>
     </div>
     <div class="mb-4">
@@ -108,9 +110,36 @@ export default defineComponent({
   position: absolute;
   right: 10%;
   top: -35%;
+  border-radius: 8px !important;
   z-index: 1001;
-  background-color: rgb(239, 248, 255);
+  background-color: var(--color-bg2);
   border: 1px solid var(--color-accent);
   opacity: 1 !important;
+}
+.arrow_wrapper {
+  position: absolute;
+  right: 9.9%;
+  top: 50%;
+  z-index: 1001;
+  transform: translateY(-50%);
+  .arrow-right {
+    width: 0;
+    position: relative;
+    height: 0;
+    border-top: 9px solid transparent;
+    border-bottom: 9px solid transparent;
+    border-left: 9px solid var(--color-accent);
+    &:after {
+      content: '';
+      width: 0;
+      height: 0;
+      border-top: 8px solid transparent;
+      border-bottom: 8px solid transparent;
+      border-left: 8px solid var(--color-bg2);
+      position: absolute;
+      top: -8px;
+      right: 1.5px;
+    }
+  }
 }
 </style>
