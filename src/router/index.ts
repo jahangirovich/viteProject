@@ -6,6 +6,11 @@ import Main from '@/pages/Main/index.vue'
 import Stalls from '@/pages/Main/Stalls/index.vue'
 import Registration from '@/pages/Auth/Registration.vue'
 import Animals from '@/pages/Main/Animals/index.vue'
+import Calendar from '@/pages/Main/Calendar/index.vue'
+import Analytics from '@/pages/Main/Analytics/index.vue'
+import Settings from '@/pages/Main/Settings/index.vue'
+import Users from '@/pages/Main/Users/index.vue'
+import Operations from '@/pages/Main/Operations/index.vue'
 
 Vue.use(VueRouter)
 
@@ -47,6 +52,31 @@ const routes = [
         path: 'animals',
         name: 'animals',
         component: Animals,
+      },
+      {
+        path: 'calendar',
+        name: 'calendar',
+        component: Calendar,
+      },
+      {
+        path: 'operations',
+        name: 'operations',
+        component: Operations,
+      },
+      {
+        path: 'users',
+        name: 'users',
+        component: Users,
+      },
+      {
+        path: 'settings',
+        name: 'settings',
+        component: Settings,
+      },
+      {
+        path: 'analytics',
+        name: 'analytics',
+        component: Analytics,
       },
     ],
   },

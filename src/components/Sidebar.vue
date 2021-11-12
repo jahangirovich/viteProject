@@ -23,17 +23,26 @@
         </div>
         <v-list>
           <v-list-item-group v-model="selectedItem" active-class="bg-active" class="mb-2">
-            <v-list-item v-for="(item, i) in items" :key="i">
-              <v-list-item-icon>
-                <v-icon v-text="item.icon"></v-icon>
-              </v-list-item-icon>
-              <v-list-item-content>
-                <v-list-item-title
-                  class="white--text text-body-2"
-                  v-text="item.text"
-                ></v-list-item-title>
-              </v-list-item-content>
-            </v-list-item>
+            <router-link
+              v-for="(item, i) in sidebarItems"
+              :key="i"
+              :to="'/home/' + item.url"
+            >
+              <v-list-item>
+                <v-list-item-icon>
+                  <v-icon v-text="item.icon"></v-icon>
+                </v-list-item-icon>
+                <v-list-item-content>
+                  <router-link :to="'/home/' + item.url">
+                    <v-list-item-title
+                      class="white--text text-body-2"
+                      v-text="item.text"
+                    ></v-list-item-title>
+                  </router-link>
+                </v-list-item-content>
+              </v-list-item>
+            </router-link>
+
             <v-divider></v-divider>
             <v-list-item class="mt-2">
               <v-list-item-icon>
@@ -61,21 +70,39 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from '@vue/composition-api'
+import { defineComponent, ref } from '@vue/composition-api'
+
+const urls = [
+  { text: 'Аналитика', icon: '$vuetify.icons.analytics', url: 'analytics' },
+  { text: 'Календарь', icon: '$vuetify.icons.calendar', url: 'calendar' },
+  { text: 'Животные', icon: '$vuetify.icons.animals', url: 'animals' },
+  { text: 'Стойла', icon: '$vuetify.icons.stalls', url: 'stalls' },
+  { text: 'Пользователи', icon: '$vuetify.icons.users', url: 'users' },
+  { text: 'Операции', icon: '$vuetify.icons.operations', url: 'operations' },
+]
+
 export default defineComponent({
   name: 'sidebar',
-  data() {
+  setup(props, { root }) {
+    // drawer to collapse and hide
+    const drawer = ref(true)
+
+    // sidebar items
+    const sidebarItems = ref(urls)
+
+    // search for current sidebar url
+    const selectedItem = ref(
+      urls.indexOf(
+        urls.find((obj) => {
+          return obj.url === root.$route.name
+        }) || urls[0]
+      )
+    )
+
     return {
-      drawer: true,
-      selectedItem: 1,
-      items: [
-        { text: 'Аналитика', icon: '$vuetify.icons.analytics' },
-        { text: 'Календарь', icon: '$vuetify.icons.calendar' },
-        { text: 'Животные', icon: '$vuetify.icons.animals' },
-        { text: 'Стойла', icon: '$vuetify.icons.stalls' },
-        { text: 'Пользователи', icon: '$vuetify.icons.users' },
-        { text: 'Операции', icon: '$vuetify.icons.operations' },
-      ],
+      sidebarItems,
+      drawer,
+      selectedItem,
     }
   },
 })

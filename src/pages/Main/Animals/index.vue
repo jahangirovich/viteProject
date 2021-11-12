@@ -1,5 +1,5 @@
 <template>
   <div>
-    <span>aslasl</span>
+    <span>Animals</span>
   </div>
 </template>
