@@ -1,10 +1,11 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Auth from '../pages/Auth/index.vue'
-import Login from '../pages/Auth/Login.vue'
-import Main from '../pages/Main/index.vue'
-import Stalls from '../pages/Main/Stalls.vue'
-import Registration from '../pages/Auth/Registration.vue'
+import Auth from '@/pages/Auth/index.vue'
+import Login from '@/pages/Auth/Login.vue'
+import Main from '@/pages/Main/index.vue'
+import Stalls from '@/pages/Main/Stalls/index.vue'
+import Registration from '@/pages/Auth/Registration.vue'
+import Animals from '@/pages/Main/Animals/index.vue'
 
 Vue.use(VueRouter)
 
@@ -41,6 +42,11 @@ const routes = [
         path: 'stalls',
         name: 'stalls',
         component: Stalls,
+      },
+      {
+        path: 'animals',
+        name: 'animals',
+        component: Animals,
       },
     ],
   },

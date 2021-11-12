@@ -2,20 +2,20 @@
   <div class="header d-flex justify-space-between align-center">
     <v-breadcrumbs :items="items" class="m-none p-0 pl-0">
       <template v-slot:item="{ item }">
-        <v-breadcrumbs-item :href="item.href" :class="item.disabled ? '' : 'underline'">
+        <v-breadcrumbs-item
+          :href="item.href"
+          :class="item.disabled ? '' : 'text-decoration-underline'"
+        >
           {{ item.text }}
         </v-breadcrumbs-item>
       </template>
       <template #divider>
-        <v-icon small>{{ mdiChevronRight }}</v-icon>
+        <v-icon small class="ma-0 pa-0">{{ mdiChevronRight }}</v-icon>
       </template>
     </v-breadcrumbs>
     <div class="d-flex align-center">
       <v-badge :content="'1'" :value="'1'" color="accent" class="mr-7" overlap>
-        <v-img
-          :src="require('@/assets/main/header/notification.svg')"
-          class="relative right-2"
-        />
+        <v-img :src="require('@/assets/main/header/notification.svg')" class="mr-2" />
       </v-badge>
       <div>
         <v-menu transition="slide-x-transition" bottom right>
@@ -25,8 +25,8 @@
                 <img src="@/assets/main/other/userProfile.png" alt="John" />
               </v-avatar>
               <div class="d-flex flex-column ml-3 mr-2">
-                <h3 class="">Фамилия Имя</h3>
-                <span class="gray_secondary--text">Администратор</span>
+                <h3 class="text-body-2 font-weight-bold">Фамилия Имя</h3>
+                <span class="gray_secondary--text text-caption">Администратор</span>
               </div>
               <v-icon>{{ mdiChevronDown }}</v-icon>
             </div>

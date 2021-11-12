@@ -15,7 +15,7 @@
             height="96"
             class="mx-auto my-4"
           />
-          <h2 class="font-weight-bold mb-4 white--text">
+          <h2 class="font-weight-bold mb-4 white--text text-body-2">
             ТОО «Крестьяское <br />
             хозяйство»
           </h2>
@@ -29,18 +29,20 @@
               </v-list-item-icon>
               <v-list-item-content>
                 <v-list-item-title
-                  class="white--text"
+                  class="white--text text-body-2"
                   v-text="item.text"
                 ></v-list-item-title>
               </v-list-item-content>
             </v-list-item>
             <v-divider></v-divider>
-            <v-list-item>
+            <v-list-item class="mt-2">
               <v-list-item-icon>
-                <v-icon>$vuetify.icons.settings</v-icon>
+                <v-icon class="text-body-2">$vuetify.icons.settings</v-icon>
               </v-list-item-icon>
               <v-list-item-content>
-                <v-list-item-title class="white--text"> Настройки</v-list-item-title>
+                <v-list-item-title class="white--text text-body-2">
+                  Настройки</v-list-item-title
+                >
               </v-list-item-content>
             </v-list-item>
           </v-list-item-group>
@@ -51,7 +53,7 @@
             width="91px"
             height="48px"
           />
-          <span class="gray_secondary--text">© 2021 Все права защищены</span>
+          <span class="gray_secondary--text text-caption">© 2021 Все права защищены</span>
         </div>
       </div>
     </v-navigation-drawer>

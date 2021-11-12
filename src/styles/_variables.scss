@@ -1,4 +1,4 @@
-
+$font-size-root: 14px;
 // Main colors of project
 $theme-colors: (
   "accent" : var(--color-accent),
@@ -31,6 +31,7 @@ $material-light: (
 *{
   font-family: 'Poppins', sans-serif !important;
   box-sizing: border-box;
+  font-size: $font-size-root;
 }
 
 .theme--light.v-tabs > .v-tabs-bar{

@@ -8,6 +8,7 @@
   --color-accent: #197DD9;
 
   --color-bg2: #EFF8FF;
+  --color-borders: #E7E7E7;
 
   --color-gray: #8e8e93;
   --color-gray-dark: #5e6269;
@@ -45,4 +46,21 @@
   --shadow-modal: 4px 8px 16px 2px rgba(94, 98, 105, 0.2);
   --shadow-menu: 0px 4px 12px rgba(0, 0, 0, 0.12);
   --shadow-body: 0px 2px 8px rgba(15, 66, 101, 0.08);
+}
+
+.v-breadcrumbs li:nth-child(even) {
+  padding: 0;
+}
+
+// add gray color of slider tabs of auth
+.v-slide-group__content{
+  &:after{
+      content: "";
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: var(--color-borders);
+      bottom: 0
+  }
 }

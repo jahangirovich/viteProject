@@ -5,7 +5,7 @@
       <div class="content pa-5">
         <customHeader />
         <div class="subheader">
-          <h2 class="mt-4">Животные</h2>
+          <h2 class="mt-4 text-h5 font-weight-bold">Животные</h2>
           <v-tabs v-model="model" align-with-title class="mt-4 transparent">
             <v-tabs-slider class="accent"></v-tabs-slider>
             <v-tab
@@ -13,17 +13,20 @@
               :key="i"
               :to="item.link"
               :class="
-                $route.name === item.link_name
-                  ? 'mt-0 ml-0 accent--text'
-                  : 'mt-0 ml-0 gray_secondary--text'
+                'mt-0 ml-0 mr-5' +
+                ($route.name === item.link_name
+                  ? ' accent--text'
+                  : ' gray_secondary--text')
               "
             >
-              <span class="font-600">{{ item.name }}</span>
+              <span class="font-weight-bold text-body-2">{{ item.name }}</span>
             </v-tab>
           </v-tabs>
           <v-tabs-items v-model="model">
             <v-tab-item v-for="(item, i) in tabs" :key="i" :value="item.link">
-              <router-view :key="$route.path"></router-view>
+              <div class="wrapper mt-3">
+                <router-view :key="$route.path"></router-view>
+              </div>
             </v-tab-item>
           </v-tabs-items>
         </div>
@@ -38,6 +41,7 @@ export default {
   components: { sidebar: Sidebar },
   data() {
     return {
+      model: false,
       items: [
         {
           text: 'Животные',
@@ -58,8 +62,8 @@ export default {
         },
         {
           name: 'Группы',
-          link: '/auth/registration',
-          link_name: '',
+          link: '/home/animals',
+          link_name: 'animals',
         },
       ],
     }
@@ -76,6 +80,10 @@ export default {
 
 .theme--light.v-tabs-items {
   background-color: transparent !important;
+}
+.v-tab {
+  padding: 0 4px !important;
+  min-width: 50px !important;
 }
 @media screen and (max-width: 959px) {
   .content {
