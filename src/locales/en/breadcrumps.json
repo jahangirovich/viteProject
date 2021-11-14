@@ -1,9 +1,10 @@
 {
-  "title": "Home",
   "stalls": "stalls",
   "animals": "animals",
   "users": "users",
   "operations": "operations",
   "analytics": "analytics",
-  "calendar": "calendar" 
+  "calendar": "calendar",
+  "animal_lists": "Список",
+  "animal_groups": "Группы"
 }

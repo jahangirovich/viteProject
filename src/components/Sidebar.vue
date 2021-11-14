@@ -27,6 +27,7 @@
               v-for="(item, i) in sidebarItems"
               :key="i"
               :to="'/home/' + item.url"
+              class="text-decoration-none"
             >
               <v-list-item>
                 <v-list-item-icon>
@@ -89,12 +90,12 @@ export default defineComponent({
 
     // sidebar items
     const sidebarItems = ref(urls)
-
+    console.log(root.$route)
     // search for current sidebar url
     const selectedItem = ref(
       urls.indexOf(
         urls.find((obj) => {
-          return obj.url === root.$route.name
+          return root.$route.fullPath.includes(obj.url)
         }) || urls[0]
       )
     )

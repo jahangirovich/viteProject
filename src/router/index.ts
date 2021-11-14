@@ -11,6 +11,8 @@ import Analytics from '@/pages/Main/Analytics/index.vue'
 import Settings from '@/pages/Main/Settings/index.vue'
 import Users from '@/pages/Main/Users/index.vue'
 import Operations from '@/pages/Main/Operations/index.vue'
+import animal_groups from '@/pages/Main/Animals/categories/groups.vue'
+import animal_lists from '@/pages/Main/Animals/categories/lists.vue'
 
 Vue.use(VueRouter)
 
@@ -51,7 +53,20 @@ const routes = [
       {
         path: 'animals',
         name: 'animals',
+        redirect: '/home/animals/lists',
         component: Animals,
+        children: [
+          {
+            path: 'groups',
+            name: 'animal_groups',
+            component: animal_groups,
+          },
+          {
+            path: 'lists',
+            name: 'animal_lists',
+            component: animal_lists,
+          },
+        ],
       },
       {
         path: 'calendar',

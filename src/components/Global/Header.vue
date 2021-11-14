@@ -6,7 +6,7 @@
           :href="item.path"
           :class="item.disabled ? '' : 'text-decoration-underline'"
         >
-          {{ item.name }}
+          {{ i18n.t('breadcrumbs.' + item.name) }}
         </v-breadcrumbs-item>
       </template>
       <template #divider>
@@ -44,10 +44,16 @@
 
 <script lang="ts">
 import { mdiChevronDown, mdiChevronRight } from '@mdi/js'
-import { computed, Ref, ref, watch } from '@vue/composition-api'
+import { Ref, ref, watch } from '@vue/composition-api'
 import { Route } from 'vue-router'
+import i18n from '@/i18n'
 
 export default {
+  data() {
+    return {
+      i18n: i18n,
+    }
+  },
   setup(props, { root }) {
     // items for header dropdown (just template till the end of design)
     const profileDropDown = ref([
@@ -63,7 +69,8 @@ export default {
     })
 
     function computedRoute(arr) {
-      return arr.matched.map((obj) => {
+      if (arr.matched.length < 1) return []
+      return arr.matched.slice(1, arr.matched.length).map((obj) => {
         return {
           ...obj,
           disabled: obj.name === root.$route.name,
@@ -81,16 +88,11 @@ export default {
       }
     )
 
-    console.log(breadcrumbs)
-
     return {
       icons,
       profileDropDown,
       breadcrumbs,
     }
-  },
-  data() {
-    return {}
   },
   name: 'customHeader',
 }

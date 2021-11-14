@@ -1,9 +1,10 @@
 {
-  "title": "Home",
   "stalls": "Стойла",
   "animals": "Животные",
   "users": "Пользователи",
   "operations": "Операции",
   "analytics": "Аналитика",
-  "calendar": "Календарь"
+  "calendar": "Календарь",
+  "animal_lists": "Список",
+  "animal_groups": "Группы"
 }
