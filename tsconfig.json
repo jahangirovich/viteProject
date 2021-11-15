@@ -1,28 +1,46 @@
 {
   "compilerOptions": {
-    "target": "esnext",
+    "target": "ES5",
     "module": "esnext",
     "strict": true,
+    "noImplicitAny": false,
+    "skipLibCheck": true,
     "jsx": "preserve",
     "importHelpers": true,
     "moduleResolution": "node",
-    "allowJs": true,
-    "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
     "baseUrl": ".",
     "types": [
-      "vite-plugin-vue-layouts/client",
-      "vite-plugin-pages/client",
-      "vite/client",
+      "webpack-env",
+      "webpack",
+      "vuetify",
       "unplugin-vue2-script-setup/types"
     ],
     "paths": {
-      "@/*": ["./src*"]
+      "@/*": [
+        "src/*"
+      ],
+      "tslib": [
+        "./node_modules/tslib/tslib.d.ts"
+      ]
     },
-    "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
+    "lib": [
+      "esnext",
+      "dom",
+      "dom.iterable",
+      "es2017"
+    ]
   },
-  "include": ["**/*.ts", "**/*.tsx", "**/*.vue", "tests/**/*.ts", "tests/**/*.tsx"],
-  "exclude": ["node_modules", "mock", "build", "dist"]
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "tests/**/*.ts",
+    "tests/**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

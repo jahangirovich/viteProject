@@ -1,33 +1,74 @@
+'use strict'
+
 module.exports = {
+  // Добавим описание на русском языке ко всем типам
   types: [
-    { value: 'init', name: 'init:     初始提交' },
-    { value: 'feat', name: 'feat:     增加新功能' },
-    { value: 'fix', name: 'fix:      修复bug' },
-    { value: 'ui', name: 'ui:       更新UI' },
-    { value: 'refactor', name: 'refactor: 代码重构' },
-    { value: 'release', name: 'release:  发布' },
-    { value: 'deploy', name: 'deploy:   部署' },
-    { value: 'docs', name: 'docs:     修改文档' },
-    { value: 'test', name: 'test:     增删测试' },
-    { value: 'chore', name: 'chore:    更改配置文件' },
-    { value: 'style', name: 'style:    样式修改不影响逻辑' },
-    { value: 'revert', name: 'revert:   版本回退' },
-    { value: 'add', name: 'add:      添加依赖' },
-    { value: 'minus', name: 'minus:    版本回退' },
-    { value: 'del', name: 'del:      删除代码/文件' },
+    {
+      value: 'build',
+      name: 'build:     Сборка проекта или изменения внешних зависимостей',
+    },
+    { value: 'ci', name: 'ci:        Настройка CI и работа со скриптами' },
+    { value: 'docs', name: 'docs:      Обновление документации' },
+    { value: 'feat', name: 'feat:      Добавление нового функционала' },
+    { value: 'fix', name: 'fix:       Исправление ошибок' },
+    {
+      value: 'perf',
+      name: 'perf:      Изменения направленные на улучшение производительности',
+    },
+    {
+      value: 'refactor',
+      name: 'refactor:  Правки кода без исправления ошибок или добавления новых функций',
+    },
+    { value: 'revert', name: 'revert:    Откат на предыдущие коммиты' },
+    {
+      value: 'style',
+      name: 'style:     Правки по кодстайлу (табы, отступы, точки, запятые и т.д.)',
+    },
+    { value: 'test', name: 'test:      Добавление тестов' },
   ],
-  scopes: [],
-  messages: {
-    type: '选择更改类型:\n',
-    scope: '更改的范围:\n',
-    // 如果allowcustomscopes为true，则使用
-    // customScope: 'Denote the SCOPE of this change:',
-    subject: '简短描述:\n',
-    body: '详细描述. 使用"|"换行:\n',
-    breaking: 'Breaking Changes列表:\n',
-    footer: '关闭的issues列表. E.g.: #31, #34:\n',
-    confirmCommit: '确认提交?',
+
+  // Область. Она характеризует фрагмент кода, которую затронули изменения
+  scopes: [
+    { name: 'components' },
+    { name: 'tutorial' },
+    { name: 'catalog' },
+    { name: 'product' },
+  ],
+
+  // Возможность задать спец ОБЛАСТЬ для определенного типа коммита (пример для 'fix')
+  /*
+  scopeOverrides: {
+    fix: [
+      {name: 'style'},
+      {name: 'e2eTest'},
+      {name: 'unitTest'}
+    ]
   },
+  */
+
+  // Поменяем дефолтные вопросы
+  messages: {
+    type: 'Какие изменения вы вносите?',
+    scope: '\nВыберите ОБЛАСТЬ, которую вы изменили (опционально):',
+    // Спросим если allowCustomScopes в true
+    customScope: 'Укажите свою ОБЛАСТЬ:',
+    subject: 'Напишите КОРОТКОЕ описание в ПОВЕЛИТЕЛЬНОМ наклонении:\n',
+    body: 'Напишите ПОДРОБНОЕ описание (опционально). Используйте "|" для новой строки:\n',
+    breaking: 'Список BREAKING CHANGES (опционально):\n',
+    footer:
+      'Место для мета данных (тикетов, ссылок и остального). Например: SECRETMRKT-700, SECRETMRKT-800:\n',
+    confirmCommit: 'Вас устраивает получившийся коммит?',
+  },
+
+  // Разрешим собственную ОБЛАСТЬ
   allowCustomScopes: true,
-  allowBreakingChanges: ['feat', 'fix'],
+
+  // Запрет на Breaking Changes
+  allowBreakingChanges: false,
+
+  // Префикс для нижнего колонтитула
+  footerPrefix: 'МЕТА ДАННЫЕ:',
+
+  // limit subject length
+  subjectLimit: 72,
 }

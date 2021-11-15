@@ -1,30 +1,19 @@
 import Vue from 'vue'
-import Vuex, { ModuleTree, Module } from 'vuex'
-
-function getModules() {
-  const components = import.meta.globEager('./modules/*.ts')
-  return components
-}
-
-interface FileModule {
-  default: object
-}
-
-const requireModules = getModules()
-const modules: ModuleTree<Module<unknown, unknown>> = {}
-Object.keys(requireModules).forEach((key: string) => {
-  const moduleName = key.replace(/^\.\/(.*)\.\w+$/, '$1')
-  const module = requireModules[key] as FileModule
-  const storeModule = module.default || module
-  modules[moduleName] = { ...storeModule, namespaced: true }
-})
+import Vuex, { StoreOptions } from 'vuex'
+import modules from './modules'
+import { actions, getters, mutations, RootState, state } from './rootStore'
 
 Vue.use(Vuex)
 
-const store = new Vuex.Store({
-  modules: {
-    ...modules,
-  },
-})
+const _store: StoreOptions<RootState> = {
+  state,
+  getters,
+  actions,
+  mutations,
+  modules,
+  plugins: [],
+}
+
+const store = new Vuex.Store(_store)
 
 export default store

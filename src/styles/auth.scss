@@ -1,0 +1,62 @@
+.main{
+    .container{
+        height: 100%;
+    }
+    // auth header styling
+    &_auth-header{
+        &>div{
+            margin: 0 auto;
+        }
+    }
+    // set color white to footer of auth 
+    &_footer{
+        margin-top: auto;
+        color: map-get($theme-colors, 'white');
+    }
+    // desktop block auth
+    &_desktop-block{
+        height: 100%;
+        &>div{
+            height: 100%;
+        }
+        &_leftSide{
+            width: 35%;
+            background-color: map-get($theme-colors, 'blue');
+        }
+        &_rightSide{
+            width: 65%;
+            &_content{
+                width: 396px;
+            }
+        }
+        // adaptive for tablet 
+        @media screen and (max-width: 1090px) and (min-width: 768px) {
+            &_leftSide{
+                width: 50%;
+            }
+            &_rightSide{
+                width: 50%;
+                &_content{
+                    width: 330px;
+                }
+            }
+        }
+    }
+}
+
+// margin tabs bar like in figma
+// .auth .v-tabs-bar{
+//     margin-top: 15px;
+// }
+
+.v-tabs-bar .v-tab {
+    margin-top: 10px !important;
+}
+
+@media screen and (min-width: 768px) {
+    .main{
+        &_mobile-block{
+            display: none;
+        }
+    }
+}
