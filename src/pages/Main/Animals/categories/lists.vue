@@ -1,5 +1,5 @@
 <template>
   <div>
-    <span>Lsits</span>
+    <div></div>
   </div>
 </template>
