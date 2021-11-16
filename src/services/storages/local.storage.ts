@@ -6,7 +6,6 @@ export class LocalStorage implements StorageInterface {
     return this._storage.setItem(name, value)
   }
   get(name: string): string | null {
-    console.log(this._storage)
     return this._storage.getItem(name)
   }
   delete(name: string): void {

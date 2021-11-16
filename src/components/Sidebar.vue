@@ -90,7 +90,6 @@ export default defineComponent({
 
     // sidebar items
     const sidebarItems = ref(urls)
-    console.log(root.$route)
     // search for current sidebar url
     const selectedItem = ref(
       urls.indexOf(

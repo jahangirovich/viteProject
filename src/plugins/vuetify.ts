@@ -11,6 +11,7 @@ import users from '../components/icons/users.vue'
 
 const opts = {
   icons: {
+    iconfont: 'mdiSvg',
     values: {
       analytics: {
         component: analytics,
