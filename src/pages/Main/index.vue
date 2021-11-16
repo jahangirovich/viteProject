@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-main class="bg-bg">
+    <v-main class="bg">
       <sidebar />
       <div class="content pa-5">
         <customHeader />

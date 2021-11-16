@@ -17,8 +17,8 @@
         </v-tab>
       </v-tabs>
       <v-tabs-items v-model="model">
-        <v-tab-item v-for="(item, i) in items" :key="i" :value="item.link">
-          <div class="wrapper mt-3">
+        <v-tab-item v-for="(item, i) in items" :key="i" :value="item.link" class="bg">
+          <div class="wrapper mt-3 bg">
             <router-view :key="$route.path"></router-view>
           </div>
         </v-tab-item>
