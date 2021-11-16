@@ -20,10 +20,10 @@ export const actions: ActionTree<AuthState, RootState> = {
 
   [AuthActionsTypes.authUserByCredentials]: async (
     { commit, rootGetters },
-    { password, login }
+    { password, email }
   ) => {
     try {
-      const result = await authApiService.login({ password, login })
+      const result = await authApiService.login({ password, email })
 
       return Promise.resolve(result)
     } catch (e) {
