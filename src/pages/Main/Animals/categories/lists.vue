@@ -28,14 +28,43 @@
           item-key="name"
           show-select
           class="elevation-1"
+          :footer-props="{
+            showFirstLastPage: true,
+            firstIcon: mdiArrowCollapseLeft,
+            lastIcon: mdiArrowCollapseRight,
+            prevIcon: mdiChevronLeft,
+            nextIcon: mdiChevronRight,
+          }"
         >
           <template v-slot:[`item.actions`]="{}">
-            <v-btn
-              elevation="0"
-              class="transparent pa-0 text-center widthAuto d-flex align-center"
-            >
-              <v-icon small class="mr-2"> {{ mdiDotsVertical }} </v-icon>
-            </v-btn>
+            <v-menu bottom left>
+              <template v-slot:activator="{ on, attrs }">
+                <v-btn dark icon v-bind="attrs" v-on="on" color="primary">
+                  <v-icon>{{ mdiDotsHorizontal }}</v-icon>
+                </v-btn>
+              </template>
+
+              <v-list class="pa-0">
+                <v-list-item-group>
+                  <div v-for="(item, i) in items" :key="i">
+                    <v-list-item class="d-flex align-center">
+                      <v-icon
+                        :class="
+                          (item.isDelete ? 'error--text' : 'primary--text') + ' mr-2'
+                        "
+                        dark
+                        >{{ item.icon }}</v-icon
+                      >
+                      <v-list-item-title
+                        :class="(item.isDelete ? 'error--text' : '') + ' text-body-2'"
+                        >{{ item.title }}</v-list-item-title
+                      >
+                    </v-list-item>
+                    <v-divider></v-divider>
+                  </div>
+                </v-list-item-group>
+              </v-list>
+            </v-menu>
           </template>
         </v-data-table>
       </div>
@@ -45,14 +74,37 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { mdiMagnify, mdiFilterVariant, mdiPlus, mdiDotsVertical } from '@mdi/js'
+import {
+  mdiMagnify,
+  mdiFilterVariant,
+  mdiPlus,
+  mdiDotsHorizontal,
+  mdiChevronRight,
+  mdiArrowCollapseRight,
+  mdiChevronLeft,
+  mdiPencil,
+  mdiCalendarRangeOutline,
+  mdiArrowURightTop,
+  mdiArrowCollapseLeft,
+  mdiDeleteOutline,
+} from '@mdi/js'
 export default Vue.extend({
   data() {
     return {
       mdiMagnify,
       mdiFilterVariant,
-      mdiDotsVertical,
+      mdiDotsHorizontal,
       mdiPlus,
+      mdiChevronLeft,
+      mdiChevronRight,
+      mdiArrowCollapseRight,
+      mdiArrowCollapseLeft,
+      items: [
+        { title: 'Расписание', icon: mdiCalendarRangeOutline },
+        { title: 'Редактировать', icon: mdiPencil },
+        { title: 'Переместить', icon: mdiArrowURightTop },
+        { title: 'Удалить', icon: mdiDeleteOutline, isDelete: true },
+      ],
       singleSelect: false,
       selected: [],
       headers: [
@@ -69,6 +121,7 @@ export default Vue.extend({
         { text: 'Iron (%)', value: 'iron' },
         { text: '', value: 'actions' },
       ],
+      // desserts: [],
       desserts: [
         {
           name: 'Frozen Yogurt',
