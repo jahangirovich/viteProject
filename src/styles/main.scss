@@ -67,6 +67,16 @@
   }
 }
 
+// width of sort by modal
+.sortByWidth{
+  width: 335px;
+
+  // customize adaptive
+  @media screen {
+    // here
+  }
+}
+
 // setting min-width auto
 .widthAuto{
   min-width: auto !important;

@@ -3,6 +3,9 @@
     <div class="pa-1 lists">
       <v-form class="pa-0" elevation="0">
         <div class="d-flex justfy-content-center align-center">
+          <!-- 
+            @prepend icon mdi icon search
+          -->
           <v-text-field
             label="ID или имя"
             hide-details="auto"
@@ -10,9 +13,74 @@
             color="accent"
             dense
             class="text-body-2 rounded-lg white"
-            :append-icon="mdiFilterVariant"
             :prepend-inner-icon="mdiMagnify"
-          ></v-text-field>
+          >
+            <!-- 
+              VMenu for modal dialog for filters
+            -->
+            <v-menu offset-y left nudge-bottom="10" bottom min-width="auto" slot="append">
+              <template v-slot:activator="{ on, attrs }">
+                <v-icon class="lock-button" v-bind="attrs" v-on="on">
+                  {{ mdiFilterVariant }}
+                </v-icon>
+              </template>
+              <v-card class="rounded-lg white sortByWidth">
+                <div class="d-flex px-4 py-2 justify-between align-center">
+                  <span class="text-h6 font-weight-bold">Фильтровать</span>
+                  <v-btn icon class="ml-auto">
+                    <v-icon>{{ mdiCloseCircleOutline }}</v-icon>
+                  </v-btn>
+                </div>
+                <v-divider></v-divider>
+                <v-list class="pa-0 w-auto">
+                  <v-list-item-group>
+                    <v-list-item
+                      class="d-flex align-center"
+                      v-for="(item, i) in items"
+                      :key="i"
+                    >
+                      <v-icon
+                        :class="
+                          (item.isDelete ? 'error--text' : 'primary--text') + ' mr-2'
+                        "
+                        dark
+                        >{{ item.icon }}</v-icon
+                      >
+                      <v-list-item-title
+                        :class="(item.isDelete ? 'error--text' : '') + ' text-body-2'"
+                        >{{ item.title }}</v-list-item-title
+                      >
+                    </v-list-item>
+                  </v-list-item-group>
+                </v-list>
+                <v-container>
+                  <v-row>
+                    <v-col cols="6" class="text-right pl-5 pr-2">
+                      <v-btn
+                        elevation="0"
+                        color="accent"
+                        class="text-none"
+                        large
+                        width="100%"
+                      >
+                        Применить
+                      </v-btn>
+                    </v-col>
+                    <v-col cols="6" class="text-left pr-5 pl-2">
+                      <v-btn
+                        outlined
+                        large
+                        class="text-none font-weight-bold"
+                        width="100%"
+                      >
+                        Сбросить
+                      </v-btn>
+                    </v-col>
+                  </v-row>
+                </v-container>
+              </v-card>
+            </v-menu>
+          </v-text-field>
           <v-btn class="ml-3 accent rounded-lg" elevation="0">
             <v-icon> {{ mdiPlus }} </v-icon>
             <span class="text-none">Добавить животное</span>
@@ -20,14 +88,24 @@
         </div>
       </v-form>
       <div class="pt-4">
+        <!-- 
+          Customized Template data table 
+          @Headers = Column name
+          @Items = Target info list
+          @Single select      
+          @Show select = showing the checkboxes for table
+          @class = (elevation is -> box-shadow in css)
+          @footerProps = Setting prev,last,next,first icons    
+        -->
         <v-data-table
           v-model="selected"
           :headers="headers"
           :items="desserts"
-          :single-select="singleSelect"
           item-key="name"
           show-select
           class="elevation-1"
+          color="black"
+          item-class="black"
           :footer-props="{
             showFirstLastPage: true,
             firstIcon: mdiArrowCollapseLeft,
@@ -36,7 +114,21 @@
             nextIcon: mdiChevronRight,
           }"
         >
+          <!-- <template v-slot:[`header.data-table-select`]="{ props, on }">
+            <v-simple-checkbox
+              :value="props.value || props.indeterminate"
+              v-on="on"
+              :indeterminate="props.indeterminate"
+              color="accent"
+            />
+          </template> -->
+          <!-- 
+            @Slot = shows modal of extra possibilites  
+          --->
           <template v-slot:[`item.actions`]="{}">
+            <!-- 
+              Menu to show list of Edit, delete, show and move
+            -->
             <v-menu bottom left>
               <template v-slot:activator="{ on, attrs }">
                 <v-btn dark icon v-bind="attrs" v-on="on" color="primary">
@@ -82,6 +174,7 @@ import {
   mdiChevronRight,
   mdiArrowCollapseRight,
   mdiChevronLeft,
+  mdiCloseCircleOutline,
   mdiPencil,
   mdiCalendarRangeOutline,
   mdiArrowURightTop,
@@ -96,8 +189,10 @@ export default Vue.extend({
       mdiDotsHorizontal,
       mdiPlus,
       mdiChevronLeft,
+      showFilter: false,
       mdiChevronRight,
       mdiArrowCollapseRight,
+      mdiCloseCircleOutline,
       mdiArrowCollapseLeft,
       items: [
         { title: 'Расписание', icon: mdiCalendarRangeOutline },
@@ -105,7 +200,6 @@ export default Vue.extend({
         { title: 'Переместить', icon: mdiArrowURightTop },
         { title: 'Удалить', icon: mdiDeleteOutline, isDelete: true },
       ],
-      singleSelect: false,
       selected: [],
       headers: [
         {
@@ -119,7 +213,7 @@ export default Vue.extend({
         { text: 'Carbs (g)', value: 'carbs' },
         { text: 'Protein (g)', value: 'protein' },
         { text: 'Iron (%)', value: 'iron' },
-        { text: '', value: 'actions' },
+        { text: '', value: 'actions', sortable: false },
       ],
       // desserts: [],
       desserts: [
