@@ -26,6 +26,7 @@
   --color-border-light-gray: #e1e1e1;
 
   --color-bg: #f1f1f1;
+  --color-BG: #EFF8FF;
   --color-bg-light: #f8f8f8;
 
   --color-success: #00c2b7;
@@ -85,4 +86,9 @@
 
 *{
   font-size: var(--font-size-sm);
+}
+
+//@at-root
+.theme--light.v-data-table tbody tr.v-data-table__selected {
+  background: var(--color-BG)
 }

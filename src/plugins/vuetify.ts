@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuetify from 'vuetify/lib'
+import { Ripple } from 'vuetify/lib/directives'
 
 import analytics from '../components/icons/analytics.vue'
 import animals from '../components/icons/animals.vue'
@@ -60,6 +61,10 @@ const opts = {
   },
 }
 
-Vue.use(Vuetify)
+Vue.use(Vuetify, {
+  directives: {
+    Ripple,
+  },
+})
 
 export default new Vuetify(opts)

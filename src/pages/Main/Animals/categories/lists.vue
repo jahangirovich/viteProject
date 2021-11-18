@@ -18,7 +18,16 @@
             <!-- 
               VMenu for modal dialog for filters
             -->
-            <v-menu offset-y left nudge-bottom="10" bottom min-width="auto" slot="append">
+            <v-menu
+              offset-y
+              left
+              nudge-bottom="10"
+              bottom
+              v-model="showFilter"
+              min-width="auto"
+              slot="append"
+              :close-on-content-click="false"
+            >
               <template v-slot:activator="{ on, attrs }">
                 <v-icon class="lock-button" v-bind="attrs" v-on="on">
                   {{ mdiFilterVariant }}
@@ -27,32 +36,48 @@
               <v-card class="rounded-lg white sortByWidth">
                 <div class="d-flex px-4 py-2 justify-between align-center">
                   <span class="text-h6 font-weight-bold">Фильтровать</span>
-                  <v-btn icon class="ml-auto">
+                  <v-btn icon class="ml-auto" @click="showFilter = false">
                     <v-icon>{{ mdiCloseCircleOutline }}</v-icon>
                   </v-btn>
                 </div>
                 <v-divider></v-divider>
-                <v-list class="pa-0 w-auto">
-                  <v-list-item-group>
-                    <v-list-item
-                      class="d-flex align-center"
-                      v-for="(item, i) in items"
-                      :key="i"
-                    >
-                      <v-icon
-                        :class="
-                          (item.isDelete ? 'error--text' : 'primary--text') + ' mr-2'
-                        "
-                        dark
-                        >{{ item.icon }}</v-icon
-                      >
-                      <v-list-item-title
-                        :class="(item.isDelete ? 'error--text' : '') + ' text-body-2'"
-                        >{{ item.title }}</v-list-item-title
-                      >
-                    </v-list-item>
-                  </v-list-item-group>
-                </v-list>
+                <div class="mx-3">
+                  <div
+                    class="d-flex my-3 align-center cursor-pointer"
+                    v-for="(item, i) in filterMenu"
+                    :key="i"
+                  >
+                    <v-autocomplete
+                      hide-details="auto"
+                      outlined
+                      multiple
+                      class="text-body-2"
+                      :items="people"
+                      :label="item.name"
+                      v-model="selectedFilters[i]"
+                    ></v-autocomplete>
+                  </div>
+                  <div>
+                    <h4 class="font-weight-bold primary--text">Пол</h4>
+                    <v-radio-group v-model="radios" row class="mt-2">
+                      <v-radio value="All" color="accent">
+                        <template v-slot:label>
+                          <div>Все</div>
+                        </template>
+                      </v-radio>
+                      <v-radio value="Samec">
+                        <template v-slot:label>
+                          <div>Самец</div>
+                        </template>
+                      </v-radio>
+                      <v-radio value="Samka">
+                        <template v-slot:label>
+                          <div>Самка</div>
+                        </template>
+                      </v-radio>
+                    </v-radio-group>
+                  </div>
+                </div>
                 <v-container>
                   <v-row>
                     <v-col cols="6" class="text-right pl-5 pr-2">
@@ -87,6 +112,49 @@
           </v-btn>
         </div>
       </v-form>
+      <div class="helpers">
+        <div
+          v-if="selectedFilters.filter((res) => res.length > 0).length > 0"
+          class="d-flex"
+        >
+          <div
+            v-for="(item, i) in selectedFilters.filter((res) => res.length > 0)"
+            :key="i"
+            class="mt-3 mb-1"
+          >
+            <v-btn
+              v-for="(it, i) in item"
+              filter
+              text
+              :key="i"
+              class="mr-2 white pl-3 pr-1 rounded-lg"
+              outlined
+            >
+              <span class="primary--text text-none"> {{ it }}</span>
+              <v-icon class="ml-1">
+                {{ mdiCloseCircleOutline }}
+              </v-icon>
+            </v-btn>
+          </div>
+        </div>
+        <div v-if="selected.length > 0" class="mt-4 mb-1 d-flex align-center">
+          <h4>Выбрано: {{ selected.length }}</h4>
+          <v-divider vertical class="mx-4 my-1"></v-divider>
+          <v-btn depressed class="pa-0 ma-0" height="24px">
+            <v-icon color="accent">
+              {{ mdiArrowURightTop }}
+            </v-icon>
+            <span class="text-none accent--text text-body-2">Переместить</span>
+          </v-btn>
+          <v-divider vertical class="mx-4 my-1"></v-divider>
+          <v-btn depressed class="pa-0 ma-0" height="24px">
+            <v-icon color="error">
+              {{ mdiDeleteOutline }}
+            </v-icon>
+            <span class="text-none error--text text-body-2">Удалить</span>
+          </v-btn>
+        </div>
+      </div>
       <div class="pt-4">
         <!-- 
           Customized Template data table 
@@ -114,14 +182,13 @@
             nextIcon: mdiChevronRight,
           }"
         >
-          <!-- <template v-slot:[`header.data-table-select`]="{ props, on }">
+          <template v-slot:[`item.data-table-select`]="{ isSelected, select }">
             <v-simple-checkbox
-              :value="props.value || props.indeterminate"
-              v-on="on"
-              :indeterminate="props.indeterminate"
+              :value="isSelected"
+              @input="select($event)"
               color="accent"
-            />
-          </template> -->
+            ></v-simple-checkbox>
+          </template>
           <!-- 
             @Slot = shows modal of extra possibilites  
           --->
@@ -129,7 +196,7 @@
             <!-- 
               Menu to show list of Edit, delete, show and move
             -->
-            <v-menu bottom left>
+            <v-menu bottom left :close-on-content-click="false">
               <template v-slot:activator="{ on, attrs }">
                 <v-btn dark icon v-bind="attrs" v-on="on" color="primary">
                   <v-icon>{{ mdiDotsHorizontal }}</v-icon>
@@ -185,15 +252,37 @@ export default Vue.extend({
   data() {
     return {
       mdiMagnify,
+      radios: 'All',
       mdiFilterVariant,
       mdiDotsHorizontal,
+      mdiDeleteOutline,
       mdiPlus,
+      selectedFilters: [[], [], [], []],
       mdiChevronLeft,
       showFilter: false,
       mdiChevronRight,
       mdiArrowCollapseRight,
+      mdiArrowURightTop,
       mdiCloseCircleOutline,
       mdiArrowCollapseLeft,
+      people: ['assa', 'sas'],
+      filterMenu: [
+        {
+          name: 'Порода',
+        },
+        {
+          name: 'Тип',
+        },
+        {
+          name: 'Стойло',
+        },
+        {
+          name: 'Группа',
+        },
+        {
+          name: 'Статус',
+        },
+      ],
       items: [
         { title: 'Расписание', icon: mdiCalendarRangeOutline },
         { title: 'Редактировать', icon: mdiPencil },
