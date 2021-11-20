@@ -2,7 +2,7 @@
   <div>
     <div class="pa-1 lists">
       <v-form class="pa-0" elevation="0">
-        <div class="d-flex justfy-content-center align-center">
+        <div class="d-flex justfy-content-center align-stretch">
           <!-- 
             @prepend icon mdi icon search
           -->
@@ -10,6 +10,7 @@
             label="ID или имя"
             hide-details="auto"
             outlined
+            name="search"
             color="accent"
             dense
             class="text-body-2 rounded-lg white"
@@ -80,7 +81,7 @@
                 </div>
                 <v-container>
                   <v-row>
-                    <v-col cols="6" class="text-right pl-5 pr-2">
+                    <v-col cols="6" class="text-right pl-4 pr-2">
                       <v-btn
                         elevation="0"
                         color="accent"
@@ -91,7 +92,7 @@
                         Применить
                       </v-btn>
                     </v-col>
-                    <v-col cols="6" class="text-left pr-5 pl-2">
+                    <v-col cols="6" class="text-left pr-4 pl-2">
                       <v-btn
                         outlined
                         large
@@ -106,7 +107,7 @@
               </v-card>
             </v-menu>
           </v-text-field>
-          <v-btn class="ml-3 accent rounded-lg" elevation="0">
+          <v-btn class="ml-3 accent rounded-lg" elevation="0" height="auto">
             <v-icon> {{ mdiPlus }} </v-icon>
             <span class="text-none">Добавить животное</span>
           </v-btn>
@@ -120,21 +121,35 @@
           <div
             v-for="(item, i) in selectedFilters.filter((res) => res.length > 0)"
             :key="i"
-            class="mt-3 mb-1"
+            class="mt-3 mb-1 d-flex"
           >
-            <v-btn
+            <v-card
               v-for="(it, i) in item"
               filter
               text
               :key="i"
-              class="mr-2 white pl-3 pr-1 rounded-lg"
+              class="
+                mr-2
+                white
+                pl-3
+                pr-1
+                px-1
+                py-0
+                rounded-lg
+                d-flex
+                justify-center
+                align-center
+              "
+              height="32px"
               outlined
             >
               <span class="primary--text text-none"> {{ it }}</span>
-              <v-icon class="ml-1">
-                {{ mdiCloseCircleOutline }}
-              </v-icon>
-            </v-btn>
+              <v-btn icon class="ml-1">
+                <v-icon color="black">
+                  {{ mdiCloseCircleOutline }}
+                </v-icon>
+              </v-btn>
+            </v-card>
           </div>
         </div>
         <div v-if="selected.length > 0" class="mt-4 mb-1 d-flex align-center">
@@ -168,20 +183,46 @@
         <v-data-table
           v-model="selected"
           :headers="headers"
-          :items="desserts"
-          item-key="name"
+          :items="animals"
+          item-key="id"
           show-select
-          class="elevation-1"
+          class="elevation-3"
           color="black"
           item-class="black"
           :footer-props="{
             showFirstLastPage: true,
-            firstIcon: mdiArrowCollapseLeft,
-            lastIcon: mdiArrowCollapseRight,
             prevIcon: mdiChevronLeft,
             nextIcon: mdiChevronRight,
           }"
         >
+          <template v-slot:[`item.id`]="{ item }">
+            <router-link
+              :to="`/home/animals/details/${item.id}/profile`"
+              class="accent--text"
+              >{{ item.id }}</router-link
+            >
+          </template>
+          <template v-slot:[`no-data`]="">
+            <v-img
+              :src="require('@/assets/main/other/not_found.svg')"
+              width="40px"
+              class="mx-auto mt-2"
+            />
+            <div class="primary--text pt-2">Не найдено</div>
+            <div class="primary--text pt-2 pb-2">Попробуйте изменить запрос</div>
+          </template>
+          <template v-slot:[`item.status`]="{ item }">
+            <v-btn
+              :color="getColor(item.status)"
+              light
+              class="success--text text-none px-2"
+              width="auto"
+              height="20px"
+              depressed
+            >
+              <span class="text-caption">{{ item.status }}</span>
+            </v-btn>
+          </template>
           <template v-slot:[`item.data-table-select`]="{ isSelected, select }">
             <v-simple-checkbox
               :value="isSelected"
@@ -236,18 +277,29 @@ import Vue from 'vue'
 import {
   mdiMagnify,
   mdiFilterVariant,
+  mdiPageFirst,
+  mdiPageLast,
   mdiPlus,
   mdiDotsHorizontal,
   mdiChevronRight,
-  mdiArrowCollapseRight,
   mdiChevronLeft,
   mdiCloseCircleOutline,
   mdiPencil,
   mdiCalendarRangeOutline,
   mdiArrowURightTop,
-  mdiArrowCollapseLeft,
   mdiDeleteOutline,
 } from '@mdi/js'
+
+type AnimalArray = {
+  id: number
+  poroda: string
+  type: string
+  sex: string
+  stall: string
+  group: string
+  status: string
+}
+
 export default Vue.extend({
   data() {
     return {
@@ -261,10 +313,10 @@ export default Vue.extend({
       mdiChevronLeft,
       showFilter: false,
       mdiChevronRight,
-      mdiArrowCollapseRight,
+      mdiPageFirst,
       mdiArrowURightTop,
       mdiCloseCircleOutline,
-      mdiArrowCollapseLeft,
+      mdiPageLast,
       people: ['assa', 'sas'],
       filterMenu: [
         {
@@ -292,112 +344,39 @@ export default Vue.extend({
       selected: [],
       headers: [
         {
-          text: 'Dessert (100g serving)',
+          text: 'ID',
           align: 'start',
-          sortable: false,
-          value: 'name',
+          sortable: true,
+          value: 'id',
         },
-        { text: 'Calories', value: 'calories' },
-        { text: 'Fat (g)', value: 'fat' },
-        { text: 'Carbs (g)', value: 'carbs' },
-        { text: 'Protein (g)', value: 'protein' },
-        { text: 'Iron (%)', value: 'iron' },
+        { text: 'Порода', value: 'poroda' },
+        { text: 'Тип', value: 'type' },
+        { text: 'Пол', value: 'sex' },
+        { text: 'Стойло', value: 'stall' },
+        { text: 'Группа', value: 'group' },
+        { text: 'Статус', value: 'status' },
         { text: '', value: 'actions', sortable: false },
       ],
-      // desserts: [],
-      desserts: [
-        {
-          name: 'Frozen Yogurt',
-          calories: 159,
-          fat: 6.0,
-          carbs: 24,
-          protein: 4.0,
-          iron: '1%',
-          actions: true,
-        },
-        {
-          name: 'Ice cream sandwich',
-          calories: 237,
-          fat: 9.0,
-          carbs: 37,
-          protein: 4.3,
-          iron: '1%',
-          actions: true,
-        },
-        {
-          name: 'Eclair',
-          calories: 262,
-          fat: 16.0,
-          carbs: 23,
-          protein: 6.0,
-          iron: '7%',
-          actions: true,
-        },
-        {
-          name: 'Cupcake',
-          calories: 305,
-          fat: 3.7,
-          carbs: 67,
-          protein: 4.3,
-          iron: '8%',
-          actions: true,
-        },
-        {
-          name: 'Gingerbread',
-          calories: 356,
-          fat: 16.0,
-          carbs: 49,
-          protein: 3.9,
-          iron: '16%',
-          actions: true,
-        },
-        {
-          name: 'Jelly bean',
-          calories: 375,
-          fat: 0.0,
-          carbs: 94,
-          protein: 0.0,
-          iron: '0%',
-          actions: true,
-        },
-        {
-          name: 'Lollipop',
-          calories: 392,
-          fat: 0.2,
-          carbs: 98,
-          protein: 0,
-          iron: '2%',
-          actions: true,
-        },
-        {
-          name: 'Honeycomb',
-          calories: 408,
-          fat: 3.2,
-          carbs: 87,
-          protein: 6.5,
-          iron: '45%',
-          actions: true,
-        },
-        {
-          name: 'Donut',
-          calories: 452,
-          fat: 25.0,
-          carbs: 51,
-          protein: 4.9,
-          iron: '22%',
-          actions: true,
-        },
-        {
-          name: 'KitKat',
-          calories: 518,
-          fat: 26.0,
-          carbs: 65,
-          protein: 7,
-          iron: '6%',
-          actions: true,
-        },
-      ],
+      animals: [] as AnimalArray[],
     }
+  },
+  created() {
+    for (let x = 0; x < 10; x++) {
+      this.animals.push({
+        id: x + 123,
+        poroda: 'Порода 1',
+        type: 'Теленок',
+        sex: 'Самец',
+        stall: 'Название стойла',
+        group: 'Название группы',
+        status: 'На ферме',
+      })
+    }
+  },
+  methods: {
+    getColor(status) {
+      return 'success_bg'
+    },
   },
 })
 </script>

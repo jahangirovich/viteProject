@@ -6,5 +6,7 @@
   "analytics": "Аналитика",
   "calendar": "Календарь",
   "animal_lists": "Список",
-  "animal_groups": "Группы"
+  "animal_groups": "Группы",
+  "animal_profile": "Профиль",
+  "animal_id": "Животное {count}"
 }

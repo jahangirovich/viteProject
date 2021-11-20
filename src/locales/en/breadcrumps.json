@@ -5,6 +5,8 @@
   "operations": "operations",
   "analytics": "analytics",
   "calendar": "calendar",
-  "animal_lists": "Список",
-  "animal_groups": "Группы"
+  "animal_lists": "lists",
+  "animal_groups": "groups",
+  "animal_profile": "profile",
+  "animal_id": "Animal {count}"
 }

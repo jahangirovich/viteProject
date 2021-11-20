@@ -3,10 +3,14 @@
     <v-breadcrumbs :items="breadcrumbs" class="m-none p-0 pl-0">
       <template v-slot:item="{ item }">
         <v-breadcrumbs-item
-          :href="item.path"
+          :href="item.disabled ? '' : item.path"
           :class="item.disabled ? '' : 'text-decoration-underline'"
         >
-          {{ i18n.t('breadcrumbs.' + item.name) }}
+          {{
+            item.id
+              ? i18n.t('breadcrumbs.animal_id', { count: item.id })
+              : i18n.t('breadcrumbs.' + item.name)
+          }}
         </v-breadcrumbs-item>
       </template>
       <template #divider>
@@ -15,7 +19,9 @@
     </v-breadcrumbs>
     <div class="d-flex align-center">
       <v-badge :content="'1'" :value="'1'" color="accent" class="mr-7" overlap>
-        <v-img :src="require('@/assets/main/header/notification.svg')" class="mr-2" />
+        <v-btn icon class="mr-1 pa-1 text-body-2">
+          <v-img :src="require('@/assets/main/header/notification.svg')" />
+        </v-btn>
       </v-badge>
       <div>
         <v-menu transition="slide-x-transition" bottom right>
@@ -69,13 +75,24 @@ export default {
     })
 
     function computedRoute(arr) {
+      // filter bridge component where stays as bridge between components
       if (arr.matched.length < 1) return []
-      return arr.matched.slice(1, arr.matched.length).map((obj) => {
-        return {
-          ...obj,
-          disabled: obj.name === root.$route.name,
-        }
-      })
+      return arr.matched
+        .slice(1, arr.matched.length)
+        .filter((obj) => obj.name !== 'bridge')
+        .map((obj) => {
+          if (obj.name.includes('id')) {
+            return {
+              ...obj,
+              id: arr.params.id,
+              disabled: true,
+            }
+          }
+          return {
+            ...obj,
+            disabled: obj.name === root.$route.name,
+          }
+        })
     }
 
     // breadcrumps generation from route

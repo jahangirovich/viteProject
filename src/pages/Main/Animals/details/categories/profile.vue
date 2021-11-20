@@ -1,5 +1,5 @@
 <template>
   <div>
-    <router-view></router-view>
+    <span>SA:as</span>
   </div>
 </template>
