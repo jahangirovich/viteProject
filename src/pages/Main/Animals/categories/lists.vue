@@ -123,33 +123,9 @@
             :key="i"
             class="mt-3 mb-1 d-flex"
           >
-            <v-card
-              v-for="(it, i) in item"
-              filter
-              text
-              :key="i"
-              class="
-                mr-2
-                white
-                pl-3
-                pr-1
-                px-1
-                py-0
-                rounded-lg
-                d-flex
-                justify-center
-                align-center
-              "
-              height="32px"
-              outlined
-            >
-              <span class="primary--text text-none"> {{ it }}</span>
-              <v-btn icon class="ml-1">
-                <v-icon color="black">
-                  {{ mdiCloseCircleOutline }}
-                </v-icon>
-              </v-btn>
-            </v-card>
+            <v-chip class="" color="white mr-2" close v-for="(it, i) in item" :key="i">
+              {{ it }}
+            </v-chip>
           </div>
         </div>
         <div v-if="selected.length > 0" class="mt-4 mb-1 d-flex align-center">
@@ -212,16 +188,7 @@
             <div class="primary--text pt-2 pb-2">Попробуйте изменить запрос</div>
           </template>
           <template v-slot:[`item.status`]="{ item }">
-            <v-btn
-              :color="getColor(item.status)"
-              light
-              class="success--text text-none px-2"
-              width="auto"
-              height="20px"
-              depressed
-            >
-              <span class="text-caption">{{ item.status }}</span>
-            </v-btn>
+            <AnimalStatus :status="item.status" />
           </template>
           <template v-slot:[`item.data-table-select`]="{ isSelected, select }">
             <v-simple-checkbox

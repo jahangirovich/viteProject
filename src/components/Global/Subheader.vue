@@ -21,7 +21,7 @@
       v-else-if="goal === 'detail'"
     >
       <div class="text-h5 font-weight-bold primary--text d-flex align-center">
-        <v-btn icon class="mr-4] ml-0">
+        <v-btn icon class="mr-4 ml-0">
           <v-icon color="primary">
             {{ mdiArrowLeft }}
           </v-icon>
