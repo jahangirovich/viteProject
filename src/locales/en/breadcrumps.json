@@ -8,5 +8,7 @@
   "animal_lists": "lists",
   "animal_groups": "groups",
   "animal_profile": "profile",
-  "animal_id": "Animal {count}"
+  "animal_id": "Animal {count}",
+  "animal_addition": "Добавить животное",
+  "animal_addition_profile": "Профиль"
 }

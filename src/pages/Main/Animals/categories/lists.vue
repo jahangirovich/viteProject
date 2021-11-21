@@ -107,7 +107,12 @@
               </v-card>
             </v-menu>
           </v-text-field>
-          <v-btn class="ml-3 accent rounded-lg" elevation="0" height="auto">
+          <v-btn
+            class="ml-3 accent rounded-lg"
+            elevation="0"
+            height="auto"
+            @click="$router.push('/home/animals/addition/profile')"
+          >
             <v-icon> {{ mdiPlus }} </v-icon>
             <span class="text-none">Добавить животное</span>
           </v-btn>

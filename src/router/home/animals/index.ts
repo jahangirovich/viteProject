@@ -4,6 +4,8 @@ import Animals from '@/pages/Main/Animals/index.vue'
 import Details from '@/pages/Main/Animals/details/index.vue'
 import AnimalProfile from '@/pages/Main/Animals/details/categories/profile.vue'
 import CategoryComponent from '@/pages/Main/Animals/categories/index.vue'
+import AnimalAddition from '@/pages/Main/Animals/addition/index.vue'
+import AdditionAnimalProfile from '@/pages/Main/Animals/addition/profile.vue'
 
 const route = {
   path: 'animals',
@@ -26,6 +28,19 @@ const route = {
           path: 'lists',
           name: 'animal_lists',
           component: animal_lists,
+        },
+      ],
+    },
+    {
+      path: 'addition',
+      name: 'animal_addition',
+      component: AnimalAddition,
+      redirect: '/home/animals/addition/profile',
+      children: [
+        {
+          path: 'profile',
+          name: 'animal_addition_profile',
+          component: AdditionAnimalProfile,
         },
       ],
     },
