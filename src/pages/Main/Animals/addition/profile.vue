@@ -1,9 +1,52 @@
 <template>
   <div class="d-flex">
     <v-card class="flex-grow-0 mr-2 pa-5">
-      <v-btn depressed height="auto" class="pa-0">
-        <v-img :src="require('@/assets/main/other/add_animal_placeholder.png')" />
+      <v-btn depressed height="auto" class="pa-0" @click="changeImage">
+        <!-- <v-img
+          :src="require('@/assets/main/other/add_animal_placeholder.png')"
+          width="232px"
+        /> -->
+        <v-file-input
+          v-model="image"
+          @change="preview_image"
+          ref="input_file"
+          style="display: none"
+        />
+        <v-img
+          :src="
+            url == null ? require('@/assets/main/other/add_animal_placeholder.png') : url
+          "
+        />
       </v-btn>
+      <div class="btns align-center text-center" v-if="image">
+        <v-divider class="mt-4 mb-2"></v-divider>
+        <v-btn
+          depressed
+          small
+          class="text-none accent--text ma-0"
+          color="transparent"
+          @click="changeImage"
+        >
+          <v-icon class="mr-2">
+            {{ mdiPencil }}
+          </v-icon>
+          Изменить Фото
+        </v-btn>
+        <v-divider class="mt-2 mb-2"></v-divider>
+        <v-btn
+          small
+          class="text-none ml-0 error--text"
+          color="transparent"
+          depressed
+          @click="deleteImage"
+        >
+          <v-icon>
+            {{ mdiDeleteOutline }}
+          </v-icon>
+          Удалить фото
+        </v-btn>
+        <v-divider class="mt-2 mb-4"></v-divider>
+      </div>
     </v-card>
     <div class="flex-grow-1 ml-2">
       <v-card class="pa-5 mb-4">
@@ -101,3 +144,31 @@
     </div>
   </div>
 </template>
+
+<script lang="ts">
+import Vue from 'vue'
+import { mdiPencil, mdiDeleteOutline } from '@mdi/js'
+export default Vue.extend({
+  data() {
+    return {
+      url: null as any,
+      image: null,
+      refs: this.$refs,
+      mdiPencil,
+      mdiDeleteOutline,
+    }
+  },
+  methods: {
+    preview_image() {
+      this.url = URL.createObjectURL(this.image)
+    },
+    changeImage() {
+      if (this.$refs?.input_file) this.$refs.input_file['$refs'].input.click()
+    },
+    deleteImage() {
+      this.url = null
+      this.image = null
+    },
+  },
+})
+</script>

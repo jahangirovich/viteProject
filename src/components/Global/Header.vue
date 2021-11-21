@@ -8,7 +8,7 @@
         >
           {{
             item.id
-              ? i18n.t('breadcrumbs.animal_id', { count: item.id })
+              ? i18n.t('breadcrumbs.' + item.name, { count: item.id })
               : i18n.t('breadcrumbs.' + item.name)
           }}
         </v-breadcrumbs-item>

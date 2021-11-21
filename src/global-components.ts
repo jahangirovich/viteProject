@@ -5,5 +5,6 @@ const components = {
   subHeader: () => import('@/components/Global/Subheader.vue'),
   AnimalStatus: () => import('@/components/Global/AnimalStatus.vue'),
   LabelWithInfo: () => import('@/components/Global/LabelWithInfo.vue'),
+  ListComponent: () => import('@/components/Global/ListComponent.vue'),
 }
 Object.entries(components).forEach(([name, component]) => Vue.component(name, component))

@@ -1,25 +1,21 @@
 <template>
-  <div>
-    <ListComponent :table="table" :filterItems="filterItems" />
-  </div>
+  <ListComponent :table="table" :filterItems="filterItems" />
 </template>
-
 <script lang="ts">
 import {
+  mdiArchiveArrowDown,
   mdiArrowURightTop,
-  mdiCalendarRangeOutline,
   mdiDeleteOutline,
   mdiPencil,
 } from '@mdi/js'
 import Vue from 'vue'
 type AnimalArray = {
   id: number
-  poroda: string
+  name: string
   type: string
-  sex: string
-  stall: string
+  heads: number
+  size: string
   group: string
-  status: string
 }
 
 export default Vue.extend({
@@ -50,13 +46,11 @@ export default Vue.extend({
         selectedFilters: [[], [], [], []],
       },
       table: {
+        link: { href: `/home/stalls/details/`, name: 'name' },
         actionMenu: [
-          { title: 'Расписание', icon: mdiCalendarRangeOutline },
           { title: 'Редактировать', icon: mdiPencil },
-          { title: 'Переместить', icon: mdiArrowURightTop },
-          { title: 'Удалить', icon: mdiDeleteOutline, isDelete: true },
+          { title: 'В архив', icon: mdiArchiveArrowDown },
         ],
-        link: { href: '/home/animals/details', name: 'id' },
         headers: [
           {
             text: 'ID',
@@ -64,18 +58,16 @@ export default Vue.extend({
             sortable: true,
             value: 'id',
           },
-          { text: 'Порода', value: 'poroda' },
+          { text: 'Наименование', value: 'name' },
           { text: 'Тип', value: 'type' },
-          { text: 'Пол', value: 'sex' },
-          { text: 'Стойло', value: 'stall' },
+          { text: 'Голов', value: 'heads' },
+          { text: 'Площадь (м²)', value: 'size' },
           { text: 'Группа', value: 'group' },
-          { text: 'Статус', value: 'status' },
           { text: '', value: 'actions', sortable: false },
         ],
         items: [] as AnimalArray[],
         selectedItemsActions: [
-          { title: 'Переместить', icon: mdiArrowURightTop, color: 'accent' },
-          { title: 'Удалить', icon: mdiDeleteOutline, isDelete: true, color: 'error' },
+          { title: 'В архив', icon: mdiArchiveArrowDown, color: 'accent' },
         ],
       },
     }
@@ -84,12 +76,11 @@ export default Vue.extend({
     for (let x = 0; x < 10; x++) {
       this.table.items.push({
         id: x + 123,
-        poroda: 'Порода 1',
+        name: 'Стойло 1',
         type: 'Теленок',
-        sex: 'Самец',
-        stall: 'Название стойла',
+        heads: 45,
         group: 'Название группы',
-        status: 'На ферме',
+        size: 'На ферме',
       })
     }
   },

@@ -28,8 +28,10 @@
               :key="i"
               :to="'/home/' + item.url"
               class="text-decoration-none"
+              :disabled="$route.fullPath.includes(item.url)"
             >
-              <v-list-item>
+              <!-- disable list item in current route url -->
+              <v-list-item :disabled="$route.fullPath.includes(item.url)">
                 <v-list-item-icon>
                   <v-icon v-text="item.icon"></v-icon>
                 </v-list-item-icon>
