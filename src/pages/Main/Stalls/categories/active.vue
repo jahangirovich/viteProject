@@ -1,13 +1,11 @@
 <template>
-  <ListComponent :table="table" :filterItems="filterItems" />
+  <div>
+    <ListComponent :table="table" :filterItems="filterItems" :dialog="dialog" />
+    <ArchiveModal :dialog="dialog" />
+  </div>
 </template>
 <script lang="ts">
-import {
-  mdiArchiveArrowDown,
-  mdiArrowURightTop,
-  mdiDeleteOutline,
-  mdiPencil,
-} from '@mdi/js'
+import { mdiArchiveArrowDown, mdiPencil } from '@mdi/js'
 import Vue from 'vue'
 type AnimalArray = {
   id: number
@@ -21,6 +19,7 @@ type AnimalArray = {
 export default Vue.extend({
   data() {
     return {
+      dialog: true,
       filterItems: {
         radios: 'All',
         filterDropDownItems: ['first', 'second'],
@@ -46,7 +45,11 @@ export default Vue.extend({
         selectedFilters: [[], [], [], []],
       },
       table: {
-        link: { href: `/home/stalls/details/`, name: 'name' },
+        link: {
+          href: `/home/stalls/details/`,
+          name: 'name',
+          add: '/home/stalls/add',
+        },
         actionMenu: [
           { title: 'Редактировать', icon: mdiPencil },
           { title: 'В архив', icon: mdiArchiveArrowDown },

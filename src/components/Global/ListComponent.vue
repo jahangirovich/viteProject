@@ -111,7 +111,7 @@
             class="ml-3 accent rounded-lg"
             elevation="0"
             height="auto"
-            @click="$router.push('/home/animals/addition/profile')"
+            @click="$router.push(table.link.add)"
           >
             <v-icon> {{ icons.mdiPlus }} </v-icon>
             <span class="text-none">Добавить</span>
@@ -263,8 +263,6 @@ import {
   mdiChevronRight,
   mdiChevronLeft,
   mdiCloseCircleOutline,
-  mdiPencil,
-  mdiCalendarRangeOutline,
   mdiArrowURightTop,
   mdiDeleteOutline,
 } from '@mdi/js'

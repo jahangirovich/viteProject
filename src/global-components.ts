@@ -6,5 +6,6 @@ const components = {
   AnimalStatus: () => import('@/components/Global/AnimalStatus.vue'),
   LabelWithInfo: () => import('@/components/Global/LabelWithInfo.vue'),
   ListComponent: () => import('@/components/Global/ListComponent.vue'),
+  ArchiveModal: () => import('@/components/Global/Modals/Archive.vue'),
 }
 Object.entries(components).forEach(([name, component]) => Vue.component(name, component))

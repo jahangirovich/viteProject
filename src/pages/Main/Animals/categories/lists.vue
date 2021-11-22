@@ -56,7 +56,11 @@ export default Vue.extend({
           { title: 'Переместить', icon: mdiArrowURightTop },
           { title: 'Удалить', icon: mdiDeleteOutline, isDelete: true },
         ],
-        link: { href: '/home/animals/details', name: 'id' },
+        link: {
+          href: '/home/animals/details',
+          name: 'id',
+          add: '/home/animals/addition/profile',
+        },
         headers: [
           {
             text: 'ID',
