@@ -1,40 +1,14 @@
 import Vue from 'vue'
 import Vuetify from 'vuetify/lib'
 import { Ripple } from 'vuetify/lib/directives'
+import { UserVuetifyPreset } from 'vuetify/types/services/presets'
+import icons from '../components/icons/index'
 
-import analytics from '../components/icons/analytics.vue'
-import animals from '../components/icons/animals.vue'
-import operations from '../components/icons/operations.vue'
-import settings from '../components/icons/settings.vue'
-import calendar from '../components/icons/calendar.vue'
-import stalls from '../components/icons/stalls.vue'
-import users from '../components/icons/users.vue'
-
-const opts = {
+const opts: Partial<UserVuetifyPreset> = {
   icons: {
     iconfont: 'mdiSvg',
     values: {
-      analytics: {
-        component: analytics,
-      },
-      animals: {
-        component: animals,
-      },
-      calendar: {
-        component: calendar,
-      },
-      operations: {
-        component: operations,
-      },
-      settings: {
-        component: settings,
-      },
-      stalls: {
-        component: stalls,
-      },
-      users: {
-        component: users,
-      },
+      ...icons,
     },
   },
   theme: {

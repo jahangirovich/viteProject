@@ -14,7 +14,7 @@ import {
 import Vue from 'vue'
 type AnimalArray = {
   id: number
-  poroda: string
+  species: string
   type: string
   sex: string
   stall: string
@@ -68,7 +68,7 @@ export default Vue.extend({
             sortable: true,
             value: 'id',
           },
-          { text: 'Порода', value: 'poroda' },
+          { text: 'Порода', value: 'species' },
           { text: 'Тип', value: 'type' },
           { text: 'Пол', value: 'sex' },
           { text: 'Стойло', value: 'stall' },
@@ -88,7 +88,7 @@ export default Vue.extend({
     for (let x = 0; x < 10; x++) {
       this.table.items.push({
         id: x + 123,
-        poroda: 'Порода 1',
+        species: 'Порода 1',
         type: 'Теленок',
         sex: 'Самец',
         stall: 'Название стойла',
