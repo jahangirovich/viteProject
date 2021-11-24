@@ -17,19 +17,15 @@ $theme-colors: (
   "error": #D91919,
   "error_bg": #FED7D7
 );
+$body-font-family: 'Open Sans', sans-serif !important;
 
 $material-light: (
   'background': map-get($theme-colors, 'accent')
 );
 
-@font-face {
- font-family: 'Poppins';
- src: url('/assets/font/AvantGardeGothicC-Book.otf') format('truetype');
-}
-
 *{
-  font-family: 'Poppins', sans-serif !important;
   box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif !important;
 }
 
 .theme--light.v-tabs > .v-tabs-bar{
@@ -48,4 +44,18 @@ body{
 .v-breadcrumbs__item {
   font-size: 12px !important;
   color: map-get($theme-colors, 'gray_secondary' ) !important
+}
+
+.v-application {
+  .text-body-2,
+  .text-body,
+  .text-h2,
+  .text-h3,
+  .text-h4,
+  .text-caption,
+  .text-h5,
+  .text-46,
+  .text-display{
+    font-family: $body-font-family;
+  }
 }
