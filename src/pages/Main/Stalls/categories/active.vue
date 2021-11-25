@@ -1,7 +1,7 @@
 <template>
   <div>
     <ListComponent :table="table" :filterItems="filterItems" :dialog="dialog" />
-    <ArchiveModal :dialog="dialog" />
+    <RemoveModal :dialog="dialog" />
   </div>
 </template>
 <script lang="ts">

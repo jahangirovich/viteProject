@@ -7,5 +7,6 @@ const components = {
   LabelWithInfo: () => import('@/components/Global/LabelWithInfo.vue'),
   ListComponent: () => import('@/components/Global/ListComponent.vue'),
   ArchiveModal: () => import('@/components/Global/Modals/Archive.vue'),
+  RemoveModal: () => import('@/components/Global/Modals/Remove.vue'),
 }
 Object.entries(components).forEach(([name, component]) => Vue.component(name, component))

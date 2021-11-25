@@ -91,3 +91,8 @@
 .theme--light.v-data-table tbody tr.v-data-table__selected {
   background: var(--color-BG)
 }
+
+// turning of uppercase in btn
+.v-btn{
+  text-transform: none;
+}
