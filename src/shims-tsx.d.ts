@@ -1,5 +1,7 @@
 /* eslint-disable no-unused-vars */
 import Vue, { VNode } from 'vue'
+import { ComponentOptions } from 'vue/types/options'
+import { ExtendedVue } from 'vue/types/vue'
 
 declare global {
   namespace JSX {
@@ -10,6 +12,12 @@ declare global {
     interface IntrinsicElements {
       [elem: string]: any
     }
+  }
+  interface VueConstructor<V extends Vue = Vue> {
+    extend(
+      options?: ComponentOptions<V & { icons: Record<string, unknown> }>
+      // eslint-disable-next-line @typescript-eslint/ban-types
+    ): ExtendedVue<V, {}, {}, {}, {}>
   }
 }
 

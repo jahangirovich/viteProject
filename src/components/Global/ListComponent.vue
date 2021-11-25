@@ -14,7 +14,7 @@
             color="accent"
             dense
             class="text-body-2 rounded-lg white"
-            :prepend-inner-icon="icons.mdiMagnify"
+            :prepend-inner-icon="$options.icons.mdiMagnify"
           >
             <!-- 
               VMenu for modal dialog for filters
@@ -31,14 +31,14 @@
             >
               <template v-slot:activator="{ on, attrs }">
                 <v-icon class="lock-button" v-bind="attrs" v-on="on">
-                  {{ icons.mdiFilterVariant }}
+                  {{ $options.icons.mdiFilterVariant }}
                 </v-icon>
               </template>
               <v-card class="rounded-lg white sortByWidth">
                 <div class="d-flex px-4 py-2 justify-between align-center">
                   <span class="text-h6 font-weight-bold">Фильтровать</span>
                   <v-btn icon class="ml-auto" @click="filterItems.showFilter = false">
-                    <v-icon>{{ icons.mdiCloseCircleOutline }}</v-icon>
+                    <v-icon>{{ $options.icons.mdiCloseCircleOutline }}</v-icon>
                   </v-btn>
                 </div>
                 <v-divider></v-divider>
@@ -113,7 +113,7 @@
             height="auto"
             @click="$router.push(table.link.add)"
           >
-            <v-icon> {{ icons.mdiPlus }} </v-icon>
+            <v-icon> {{ $options.icons.mdiPlus }} </v-icon>
             <span class="text-none">Добавить</span>
           </v-btn>
         </div>
@@ -179,8 +179,8 @@
           item-class="black"
           :footer-props="{
             showFirstLastPage: true,
-            prevIcon: icons.mdiChevronLeft,
-            nextIcon: icons.mdiChevronRight,
+            prevIcon: $options.icons.mdiChevronLeft,
+            nextIcon: $options.icons.mdiChevronRight,
           }"
         >
           <template v-slot:[`item.${table.link.name}`]="{ item }">
@@ -219,7 +219,7 @@
             <v-menu bottom left :close-on-content-click="false">
               <template v-slot:activator="{ on, attrs }">
                 <v-btn dark icon v-bind="attrs" v-on="on" color="primary">
-                  <v-icon>{{ icons.mdiDotsHorizontal }}</v-icon>
+                  <v-icon>{{ $options.icons.mdiDotsHorizontal }}</v-icon>
                 </v-btn>
               </template>
 
@@ -267,9 +267,9 @@ import {
   mdiDeleteOutline,
 } from '@mdi/js'
 
-type AnimalArray = {
+type TAnimal = {
   id: number
-  poroda: string
+  species: string
   type: string
   sex: string
   stall: string
@@ -279,28 +279,24 @@ type AnimalArray = {
 
 export default Vue.extend({
   props: ['filterItems', 'table'],
-  data() {
-    return {
-      icons: {
-        mdiMagnify,
-        mdiFilterVariant,
-        mdiDotsHorizontal,
-        mdiDeleteOutline,
-        mdiPlus,
-        mdiChevronLeft,
-        mdiChevronRight,
-        mdiPageFirst,
-        mdiArrowURightTop,
-        mdiCloseCircleOutline,
-        mdiPageLast,
-      },
-    }
+  icons: {
+    mdiMagnify,
+    mdiFilterVariant,
+    mdiDotsHorizontal,
+    mdiDeleteOutline,
+    mdiPlus,
+    mdiChevronLeft,
+    mdiChevronRight,
+    mdiPageFirst,
+    mdiArrowURightTop,
+    mdiCloseCircleOutline,
+    mdiPageLast,
   },
   created() {
     for (let x = 0; x < 10; x++) {
       this.table.items.push({
         id: x + 123,
-        poroda: 'Порода 1',
+        species: 'Порода 1',
         type: 'Теленок',
         sex: 'Самец',
         stall: 'Название стойла',
