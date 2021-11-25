@@ -8,5 +8,6 @@ const components = {
   ListComponent: () => import('@/components/Global/ListComponent.vue'),
   ArchiveModal: () => import('@/components/Global/Modals/Archive.vue'),
   RemoveModal: () => import('@/components/Global/Modals/Remove.vue'),
+  PropertyComponent: () => import('@/components/Global/Property.vue'),
 }
 Object.entries(components).forEach(([name, component]) => Vue.component(name, component))

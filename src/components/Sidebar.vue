@@ -30,6 +30,10 @@
               class="text-decoration-none"
               :disabled="$route.fullPath.includes(item.url)"
             >
+              <v-divider
+                v-if="item.icon === '$vuetify.icons.settings'"
+                class="my-2"
+              ></v-divider>
               <!-- disable list item in current route url -->
               <v-list-item :disabled="$route.fullPath.includes(item.url)">
                 <v-list-item-icon>
@@ -45,18 +49,6 @@
                 </v-list-item-content>
               </v-list-item>
             </router-link>
-
-            <v-divider></v-divider>
-            <v-list-item class="mt-2">
-              <v-list-item-icon>
-                <v-icon class="text-body-2">$vuetify.icons.settings</v-icon>
-              </v-list-item-icon>
-              <v-list-item-content>
-                <v-list-item-title class="white--text text-body-2">
-                  Настройки</v-list-item-title
-                >
-              </v-list-item-content>
-            </v-list-item>
           </v-list-item-group>
         </v-list>
         <div class="mt-auto pa-4">
@@ -82,6 +74,7 @@ const urls = [
   { text: 'Стойла', icon: '$vuetify.icons.stalls', url: 'stalls' },
   { text: 'Пользователи', icon: '$vuetify.icons.users', url: 'users' },
   { text: 'Операции', icon: '$vuetify.icons.operations', url: 'operations' },
+  { icon: '$vuetify.icons.settings', text: 'Настройки', url: 'settings' },
 ]
 
 export default defineComponent({

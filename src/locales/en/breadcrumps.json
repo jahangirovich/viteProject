@@ -10,5 +10,6 @@
   "animal_profile": "profile",
   "animal_id": "Animal {count}",
   "animal_addition": "Добавить животное",
-  "animal_addition_profile": "Профиль"
+  "animal_addition_profile": "Профиль",
+  "settings": "Settings"
 }
