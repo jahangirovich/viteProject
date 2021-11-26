@@ -13,7 +13,9 @@
                 />
               </div>
               <div class="ml-5">
-                <h6 class="text-h6 font-weight-bold">ТОО «Крестьяское хозяйство»</h6>
+                <h6 class="text-h6 font-weight-bold">
+                  {{ $t('ТОО «Крестьяское хозяйство»') }}
+                </h6>
                 <AnimalStatus :status="'Активная'" />
               </div>
             </div>
@@ -42,7 +44,7 @@
               </div>
             </div>
             <v-divider class="my-4"></v-divider>
-            <h6 class="text-h6 font-weight-bold">Реквизиты</h6>
+            <h6 class="text-h6 font-weight-bold">{{ $t('Реквизиты') }}</h6>
             <PropertyComponent
               :values="[
                 { type: 'Банк', value: 'АО «Банк ЦентрКредит»' },
@@ -62,7 +64,7 @@
                 <v-icon class="mr-2">
                   {{ mdiPencil }}
                 </v-icon>
-                Редактировать
+                {{ $t('Редактировать') }}
               </v-btn>
             </div>
           </v-card>
@@ -76,7 +78,10 @@
                 <span>Добавить</span>
               </v-btn>
             </div>
-            <v-divider></v-divider>
+            <v-divider class="mt-4"></v-divider>
+            <div>
+              <list-areas />
+            </div>
           </v-card>
         </v-col>
       </v-row>

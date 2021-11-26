@@ -3,7 +3,7 @@
     <v-card class="mx-3 pa-4 flex-grow-0" elevation="1">
       <div>
         <v-img :src="require('@/assets/main/other/cow.png')" width="232px" cover></v-img>
-        <h4 class="text-h6 font-weight-bold mt-2">Кличка</h4>
+        <h4 class="text-h6 font-weight-bold mt-2">{{ $t('Кличка') }}</h4>
         <div class="mt-1">
           <AnimalStatus :status="'На ферме'" />
         </div>
@@ -72,7 +72,7 @@
     <v-divider vertical></v-divider>
     <div class="mx-3 flex-grow-1" height="auto" elevation="1">
       <v-card>
-        <h4 class="text-body-2 font-weight-bold pa-4">Расписание</h4>
+        <h4 class="text-body-2 font-weight-bold pa-4">{{ $t('Кличка') }}</h4>
         <v-divider></v-divider>
         <div class="content pa-4">
           <div class="mb-4">
@@ -81,7 +81,7 @@
               <v-avatar color="green" size="14" class="mr-3">
                 <span class="white--text text-h5"></span>
               </v-avatar>
-              Наименование события
+              {{ $t('Наименование события') }}
             </v-btn>
           </div>
           <div class="mb-4">
@@ -90,7 +90,7 @@
               <v-avatar color="accent" size="14" class="mr-3">
                 <span class="white--text text-h5"></span>
               </v-avatar>
-              Наименование события
+              {{ $t('Наименование события') }}
             </v-btn>
           </div>
           <div class="mb-4">
@@ -99,7 +99,7 @@
               <v-avatar color="accent" size="14" class="mr-3">
                 <span class="white--text text-h5"></span>
               </v-avatar>
-              Наименование события
+              {{ $t('Наименование события') }}
             </v-btn>
           </div>
         </div>
