@@ -73,9 +73,13 @@
           <v-card class="px-5 pt-6 pb-4" rounded="lg">
             <div class="d-flex justify-space-between akign-center">
               <h5 class="text-h6 font-weight-bold">Участки</h5>
-              <v-btn depressed class="accent--text white">
+              <v-btn
+                depressed
+                class="accent--text white"
+                @click="$router.push('/home/settings/area/add')"
+              >
                 <v-icon> {{ mdiPlus }} </v-icon>
-                <span>Добавить</span>
+                <span>{{ $t('Добавить') }}</span>
               </v-btn>
             </div>
             <v-divider class="mt-4"></v-divider>
