@@ -12,14 +12,13 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-export default Vue.extend({
+export default {
   props: ['status'],
   methods: {
     getColor(status) {
       return 'success_bg'
     },
   },
-  name: 'AnimalStatus',
-})
+  name: 'StatusBadge',
+}
 </script>

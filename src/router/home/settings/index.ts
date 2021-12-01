@@ -7,12 +7,12 @@ import Profile from '@/pages/Main/Settings/actions/profile.vue'
 const routes = {
   path: 'settings',
   name: 'settings',
-  component: Settings, // to make global
+  component: Profile, // to make global
   children: [
     {
       path: '',
       name: 'bridge', // to hide name of breadcrumb
-      component: Profile,
+      component: Settings,
     },
     {
       path: 'area/edit',

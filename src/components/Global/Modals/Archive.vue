@@ -53,10 +53,9 @@
   </v-row>
 </template>
 <script lang="ts">
-import Vue from 'vue'
 import { mdiArchiveArrowDown, mdiCloseCircleOutline } from '@mdi/js'
 import i18n from '@/i18n'
-export default Vue.extend({
+export default {
   props: ['dialog'],
   data() {
     return {
@@ -66,5 +65,5 @@ export default Vue.extend({
     }
   },
   name: 'ArchiveModal',
-})
+}
 </script>

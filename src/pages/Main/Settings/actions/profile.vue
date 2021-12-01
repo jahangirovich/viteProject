@@ -16,7 +16,7 @@
                 <h6 class="text-h6 font-weight-bold">
                   {{ $t('ТОО «Крестьяское хозяйство»') }}
                 </h6>
-                <AnimalStatus :status="'Активная'" />
+                <StatusBadge :status="'Активная'" />
               </div>
             </div>
             <v-divider class="my-4"></v-divider>

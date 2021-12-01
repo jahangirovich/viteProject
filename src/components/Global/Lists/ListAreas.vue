@@ -27,9 +27,8 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
 import { mdiChevronRight } from '@mdi/js'
-export default Vue.extend({
+export default {
   data() {
     return {
       mdiChevronRight,
@@ -52,5 +51,6 @@ export default Vue.extend({
       ],
     }
   },
-})
+  name: 'ListAreas',
+}
 </script>

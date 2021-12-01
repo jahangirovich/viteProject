@@ -72,9 +72,8 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
 import { mdiArrowLeft, mdiPencil, mdiDeleteOutline } from '@mdi/js'
-export default Vue.extend({
+export default {
   props: ['title', 'items', 'goal'],
   data() {
     return {
@@ -84,5 +83,6 @@ export default Vue.extend({
       mdiDeleteOutline,
     }
   },
-})
+  name: 'subHeader',
+}
 </script>

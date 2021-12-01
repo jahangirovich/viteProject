@@ -5,7 +5,7 @@
         <v-img :src="require('@/assets/main/other/cow.png')" width="232px" cover></v-img>
         <h4 class="text-h6 font-weight-bold mt-2">{{ $t('Кличка') }}</h4>
         <div class="mt-1">
-          <AnimalStatus :status="'На ферме'" />
+          <StatusBadge :status="'На ферме'" />
         </div>
         <div class="mt-3">
           <LabelWithInfo type="Тип" value="Теленок" />

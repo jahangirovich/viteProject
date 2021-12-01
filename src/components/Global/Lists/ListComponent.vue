@@ -200,7 +200,7 @@
             <div class="primary--text pt-2 pb-2">Попробуйте изменить запрос</div>
           </template>
           <template v-slot:[`item.status`]="{ item }">
-            <AnimalStatus :status="item.status" />
+            <StatusBadge :status="item.status" />
           </template>
           <template v-slot:[`item.data-table-select`]="{ isSelected, select }">
             <v-simple-checkbox
@@ -252,7 +252,6 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
 import {
   mdiMagnify,
   mdiFilterVariant,
@@ -277,7 +276,7 @@ type TAnimal = {
   status: string
 }
 
-export default Vue.extend({
+export default {
   props: ['filterItems', 'table'],
   icons: {
     mdiMagnify,
@@ -311,7 +310,7 @@ export default Vue.extend({
     },
   },
   name: 'ListComponent',
-})
+}
 </script>
 
 <style lang="scss">
