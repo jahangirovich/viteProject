@@ -11,11 +11,10 @@
               class="ma-auto"
             >
             </v-img>
-            <div class="font-weight-light white--text text-center mt-5">
-              Платформа для мониторинга <br />
-              и аналитики данных <br />
-              в животноводстве
-            </div>
+            <div
+              class="font-weight-light white--text text-center mt-5"
+              v-html="i18n.t('auth.header_description')"
+            ></div>
           </div>
           <v-card class="rounded-lg shadow-md overflow-hidden main_body">
             <v-tabs v-model="model" centered fixed-tabs>
@@ -38,19 +37,25 @@
             </v-tabs-items>
           </v-card>
           <div class="main_footer align-content-end text-center">
-            <h2 class="font-weight-bold white--text text-body-2 uppercase mt-9 mb-1">
-              Техническая поддержка
-              <br />
-              -
-            </h2>
-            <div class="phone my-1 text-body-2">+7 (707) 902-34-56</div>
-            <div class="phone text-decoration-underline my-1 text-body-2">
-              support.cowmas.com
-            </div>
+            <h2
+              class="font-weight-bold white--text text-body-2 uppercase mt-9 mb-1"
+              v-text="i18n.t('auth.footer_description')"
+            ></h2>
+            <a
+              class="phone my-1 text-body-2"
+              :href="i18n.t('auth.footer_phone')"
+              v-text="i18n.t('auth.footer_phone')"
+            ></a>
+            <a
+              class="phone text-decoration-underline my-1 text-body-2"
+              :href="i18n.t('auth.footer_support_site')"
+              v-text="i18n.t('auth.footer_support_site')"
+            >
+            </a>
           </div>
         </div>
       </v-container>
-      <div class="main_desktop-block">
+      <!-- <div class="main_desktop-block">
         <div class="d-flex">
           <div
             class="
@@ -127,12 +132,13 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
     </v-main>
   </v-app>
 </template>
 <script>
 import { defineComponent, ref } from '@vue/composition-api'
+import i18n from '@/i18n'
 
 export default defineComponent({
   setup() {
@@ -154,6 +160,7 @@ export default defineComponent({
   data() {
     return {
       model: this.$route.path.name,
+      i18n,
     }
   },
 })
