@@ -7,6 +7,11 @@ const requireModule = require.context('./components/Global', true, /.*.vue/)
 
 const modules: ModuleTree<RootState> = {}
 
+/*
+ Rules to set name of component:
+  1) don't forget setting name of component
+  2) use export default with empty instance like export default {}
+*/
 requireModule.keys().forEach((filename) => {
   const component = requireModule(filename).default || requireModule(filename)
   // setting name of component
@@ -14,6 +19,5 @@ requireModule.keys().forEach((filename) => {
 })
 
 Object.entries(modules).forEach(([name, component]) => {
-  // console.log(name, component)
   Vue.component(name, component)
 })
