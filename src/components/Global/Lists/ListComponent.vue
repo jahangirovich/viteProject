@@ -266,16 +266,6 @@ import {
   mdiDeleteOutline,
 } from '@mdi/js'
 
-type TAnimal = {
-  id: number
-  species: string
-  type: string
-  sex: string
-  stall: string
-  group: string
-  status: string
-}
-
 export default {
   props: ['filterItems', 'table'],
   icons: {

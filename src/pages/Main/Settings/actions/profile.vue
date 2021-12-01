@@ -7,10 +7,12 @@
           <v-card class="px-5 py-4" rounded="lg">
             <div class="d-flex align-center">
               <div>
-                <v-img
-                  :src="require('@/assets/main/settings/profile_placeholder.svg')"
-                  width="96px"
-                />
+                <v-avatar class="profile" color="transparent" size="96">
+                  <img
+                    :src="require('@/assets/main/settings/profile_placeholder.svg')"
+                    width="96px"
+                  />
+                </v-avatar>
               </div>
               <div class="ml-5">
                 <h6 class="text-h6 font-weight-bold">

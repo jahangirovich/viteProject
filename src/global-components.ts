@@ -1,7 +1,6 @@
-import Vue from 'vue'
-
 import { ModuleTree } from 'vuex'
 import { RootState } from '@/store/rootStore'
+import Vue from 'vue'
 
 const requireModule = require.context('./components/Global', true, /.*.vue/)
 
