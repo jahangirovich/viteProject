@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 <template>
-  <v-form class="mx-4 my-6">
+  <v-form class="mx-4 my-6" method="post" @submit="auth.signUp">
     <div class="mb-4">
       <v-text-field
         color="accent"
@@ -87,11 +87,17 @@
   </v-form>
 </template>
 <script lang="ts">
-import { defineComponent } from '@vue/composition-api'
+import { defineComponent, inject } from '@vue/composition-api'
 import { mdiEyeOff, mdiEye, mdiInformation } from '@mdi/js'
 
 export default defineComponent({
   components: {},
+  setup() {
+    const auth = inject('auth')
+    return {
+      auth,
+    }
+  },
   data() {
     return {
       show1: false,

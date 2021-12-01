@@ -1,9 +1,10 @@
 <template>
-  <v-form class="mx-4 my-6">
+  <v-form class="mx-4 my-6" method="post" @submit="(e) => auth.login(e, formData)">
     <div class="mb-6">
       <v-text-field
         color="accent"
         label="Email"
+        v-model="formData.email"
         type="email"
         outlined
         hide-details="auto"
@@ -11,9 +12,9 @@
     </div>
     <div class="mb-5">
       <v-text-field
-        v-model="password"
         color="accent"
         class="border-gray_secondary"
+        v-model="formData.password"
         :append-icon="show1 ? mdiEye : mdiEyeOff"
         :type="show1 ? 'text' : 'password'"
         name="password"
@@ -39,17 +40,27 @@
   </v-form>
 </template>
 <script lang="ts">
-import { defineComponent } from '@vue/composition-api'
 import { mdiEyeOff, mdiEye } from '@mdi/js'
-export default defineComponent({
-  components: {},
+import { inject, reactive } from '@vue/composition-api'
+
+export default {
+  setup() {
+    const auth = inject('auth')
+    const formData = reactive({
+      email: '',
+      password: '',
+    })
+    return {
+      auth,
+      formData,
+    }
+  },
   data() {
     return {
       show1: false,
-      password: '',
       mdiEyeOff,
       mdiEye,
     }
   },
-})
+}
 </script>

@@ -63,7 +63,6 @@ const responseInterceptionConfigOverride = async (
 ) => {
   const res = response
   const originalRequest = response.config
-  // console.log(res, "response");
   // if (res.status !== 200) {
   //   /// server ERROR
   //   return Promise.reject(res?.data ?? res);
@@ -110,7 +109,6 @@ const responseInterceptionConfigOverride = async (
   //         ] = `${small_token}`;
   //       return requestInstance(originalRequest);
   //     } catch (e) {
-  //       console.log(e, "ERROR");
   //       tokenService.removeToken();
   //       return {};
   //     }

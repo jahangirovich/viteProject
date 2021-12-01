@@ -133,9 +133,11 @@
 </template>
 <script>
 import { defineComponent, ref } from '@vue/composition-api'
+import useAuth from '.'
+import { provide } from '@vue/composition-api'
 
 export default defineComponent({
-  setup() {
+  setup(props, { root }) {
     const items = ref([
       {
         name: 'Войти',
@@ -148,7 +150,8 @@ export default defineComponent({
         link_name: 'registration',
       },
     ])
-
+    const auth = useAuth(root)
+    provide('auth', auth)
     return { items }
   },
   data() {
