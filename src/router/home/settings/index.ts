@@ -2,17 +2,17 @@ import Settings from '@/pages/Main/Settings/index.vue'
 import EditArea from '@/pages/Main/Settings/areas/edit.vue'
 import AddArea from '@/pages/Main/Settings/areas/add.vue'
 import DetailArea from '@/pages/Main/Settings/areas/details.vue'
-import Bridge from '@/components/Global/Bridge.vue'
+import Profile from '@/pages/Main/Settings/actions/profile.vue'
 
 const routes = {
   path: 'settings',
   name: 'settings',
-  component: Bridge,
+  component: Settings, // to make global
   children: [
     {
-      path: '/',
-      name: 'bridge',
-      component: Settings,
+      path: '',
+      name: 'bridge', // to hide name of breadcrumb
+      component: Profile,
     },
     {
       path: 'area/edit',

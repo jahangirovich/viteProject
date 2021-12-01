@@ -122,5 +122,6 @@ export default Vue.extend({
       date: null,
     }
   },
+  name: 'area_add',
 })
 </script>

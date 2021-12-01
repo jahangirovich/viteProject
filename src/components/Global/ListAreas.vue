@@ -1,6 +1,6 @@
 <template>
   <v-list>
-    <div v-for="(folder, i) in folders" :key="folder.title">
+    <div v-for="(folder, i) in folders" :key="i">
       <v-list-item class="px-0">
         <v-list-item-content>
           <v-list-item-title
