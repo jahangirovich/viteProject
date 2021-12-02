@@ -3,6 +3,7 @@ import { TUser } from '@/models'
 export enum AuthActionsTypes {
   authUserByCredentials = 'authUserByCredentials',
   checkIsAuth = 'checkIsAuth',
+  signUp = 'signUp',
 }
 
 export enum AuthMutationTypes {

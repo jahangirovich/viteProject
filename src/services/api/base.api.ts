@@ -1,7 +1,7 @@
 import axios, { AxiosError, AxiosRequestConfig } from 'axios'
 import { tokenService } from '@/services/storages/storage.service'
 
-const API_VERSION = '/api/v1'
+const API_VERSION = '/api/auth'
 
 /* eslint-disable */
 class BaseApi {
@@ -34,19 +34,19 @@ class BaseApi {
   }
 
   get<T>(suffix: string, config?: AxiosRequestConfig) {
-    return this.service.get<T>(`${this.baseApiUrl}/${suffix}`, config)
+    return this.service.get<T>(`${this.baseApiUrl}/${suffix}/`, config)
   }
 
   post<T>(suffix: string, payload: Record<string, any>, config: AxiosRequestConfig = {}) {
-    return this.service.post<T>(`${this.baseApiUrl}/${suffix}`, payload, config)
+    return this.service.post<T>(`${this.baseApiUrl}/${suffix}/`, payload, config)
   }
 
   put<T>(suffix: string, payload: Record<string, any>) {
-    return this.service.put<T>(`${this.baseApiUrl}/${suffix}`, payload)
+    return this.service.put<T>(`${this.baseApiUrl}/${suffix}/`, payload)
   }
 
   delete<T>(suffix: string) {
-    return axios.delete<T>(`${this.baseApiUrl}/${suffix}`)
+    return axios.delete<T>(`${this.baseApiUrl}/${suffix}/`)
   }
 }
 

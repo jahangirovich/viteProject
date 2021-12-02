@@ -1,5 +1,5 @@
 <template>
-  <v-form class="mx-4 my-6" method="post" @submit="(e) => auth.login(e, formData)">
+  <v-form class="mx-4 my-6" method="post" @submit="authLogin">
     <div class="mb-6">
       <v-text-field
         color="accent"
@@ -45,13 +45,28 @@ import { inject, reactive } from '@vue/composition-api'
 
 export default {
   setup() {
-    const auth = inject('auth')
+    // inject login function from parent
+    const login = inject('login')
+    // data fields
     const formData = reactive({
       email: '',
       password: '',
     })
+
+    const authLogin = (e: Event) => {
+      e.preventDefault()
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      login(formData)
+        .then((res) => {
+          console.log(res)
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+    }
     return {
-      auth,
+      authLogin,
       formData,
     }
   },

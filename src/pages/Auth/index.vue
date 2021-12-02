@@ -133,25 +133,18 @@
 </template>
 <script>
 import { defineComponent, ref } from '@vue/composition-api'
-import useAuth from '.'
+import useAuth, { tabLinks } from '.'
 import { provide } from '@vue/composition-api'
 
 export default defineComponent({
   setup(props, { root }) {
-    const items = ref([
-      {
-        name: 'Войти',
-        link: '/auth/login',
-        link_name: 'login',
-      },
-      {
-        name: 'Регистрация',
-        link: '/auth/registration',
-        link_name: 'registration',
-      },
-    ])
+    const items = ref(tabLinks)
     const auth = useAuth(root)
-    provide('auth', auth)
+    // providing functions to child components
+    provide('login', auth.login)
+
+    provide('signUp', auth.signUp)
+
     return { items }
   },
   data() {

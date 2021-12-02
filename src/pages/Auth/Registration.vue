@@ -1,12 +1,13 @@
 /* eslint-disable prettier/prettier */
 <template>
-  <v-form class="mx-4 my-6" method="post" @submit="auth.signUp">
+  <v-form class="mx-4 my-6" method="post" @submit="authSignUp">
     <div class="mb-4">
       <v-text-field
         color="accent"
         label="Имя*"
         type="text"
         outlined
+        v-model="formFields.first_name"
         hide-details="auto"
       />
     </div>
@@ -15,6 +16,7 @@
         color="accent"
         label="Фамилия*"
         type="text"
+        v-model="formFields.last_name"
         outlined
         hide-details="auto"
       />
@@ -24,6 +26,7 @@
         color="accent"
         label="Почта*"
         type="email"
+        v-model="formFields.email"
         :append-icon="mdiInformation"
         outlined
         @click:append="showInfo = !showInfo"
@@ -46,10 +49,9 @@
     </div>
     <div class="mb-4">
       <v-text-field
-        v-model="password"
         :append-icon="show1 ? mdiEye : mdiEyeOff"
         :type="show1 ? 'text' : 'password'"
-        name="password"
+        v-model="formFields.password"
         hide-details="auto"
         color="accent"
         label="Придумайте пароль*"
@@ -61,13 +63,20 @@
       <v-text-field
         label="Номер телефона"
         type="text"
+        v-model="formFields.phone_number"
         outlined
         hide-details="auto"
         :append-icon="mdiInformation"
       />
     </div>
     <div class="mb-4">
-      <v-text-field label="Организация" type="text" outlined hide-details="auto" />
+      <v-text-field
+        label="Организация"
+        v-model="formFields.organization_name"
+        type="text"
+        outlined
+        hide-details="auto"
+      />
     </div>
     <v-btn
       type="submit"
@@ -87,15 +96,38 @@
   </v-form>
 </template>
 <script lang="ts">
-import { defineComponent, inject } from '@vue/composition-api'
+import { defineComponent, inject, reactive } from '@vue/composition-api'
 import { mdiEyeOff, mdiEye, mdiInformation } from '@mdi/js'
 
 export default defineComponent({
   components: {},
   setup() {
-    const auth = inject('auth')
+    const signUp = inject('signUp')
+    const formFields = reactive({
+      first_name: '',
+      last_name: '',
+      phone_number: '',
+      organization_name: '',
+      email: '',
+      password: '',
+    })
+
+    const authSignUp = (e) => {
+      e.preventDefault()
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      signUp(formFields)
+        .then((res) => {
+          console.log(res)
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+    }
+
     return {
-      auth,
+      authSignUp,
+      formFields,
     }
   },
   data() {

@@ -39,4 +39,22 @@ export const actions: ActionTree<AuthState, RootState> = {
       }
     }
   },
+  [AuthActionsTypes.signUp]: async ({ commit, rootGetters }, formData) => {
+    try {
+      const result = await authApiService.signUp(formData)
+
+      return Promise.resolve(result)
+    } catch (e) {
+      if (isServerError(e)) {
+        const message = {
+          title:
+            e.response?.data?.request_url || i18n.t('errors.serviceNotWorking.title'),
+          description:
+            e.response?.data?.request_url ||
+            i18n.t('errors.serviceNotWorking.description'),
+        }
+        return Promise.reject(message)
+      }
+    }
+  },
 }
