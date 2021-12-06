@@ -32,9 +32,10 @@
         <div class="text_wrapper" slot="prepend" v-if="showInfo">
           <v-card elevation="0" left class="ma-2 hintCard pa-2" slot="prepend">
             <div>
-              <span class="text-body-2 d-absolute">
-                Ваш электронный адрес будет<br />
-                использоваться как логин <br />для авторизации в системе
+              <span
+                class="email-hint d-absolute"
+                v-text="$t('registration.email_input_hint')"
+              >
               </span>
             </div>
           </v-card>
@@ -61,27 +62,34 @@
       <v-text-field
         label="Номер телефона"
         type="text"
+        color="accent"
         outlined
         hide-details="auto"
         :append-icon="mdiInformation"
       />
     </div>
     <div class="mb-4">
-      <v-text-field label="Организация" type="text" outlined hide-details="auto" />
+      <v-text-field
+        color="accent"
+        label="Организация"
+        type="text"
+        outlined
+        hide-details="auto"
+      />
     </div>
     <v-btn
       type="submit"
-      class="rounded-lg white--text mt-2"
+      class="reg-btn rounded-lg white--text mt-2"
       large
       color="accent"
       depressed
       width="100%"
     >
-      Зарегистрироваться
+      {{ $t('registration.registration_text') }}
     </v-btn>
-    <div class="text-decoration-underline text--accent mt-6 text-center">
-      <router-link to="/" class="accent--text text-body-2"
-        >Есть аккаунт? Войти
+    <div class="text--accent mt-6 text-center">
+      <router-link to="/" class="login-link accent--text"
+        >{{ $t('registration.login_text') }}
       </router-link>
     </div>
   </v-form>
@@ -106,7 +114,41 @@ export default defineComponent({
 </script>
 
 <style scoped lang="scss">
+@import '@/styles/variables';
+.email-hint {
+  display: block;
+  font: inherit;
+  font-size: $main-font-size !important;
+  line-height: $secondary-line-height;
+}
+
+.login-link {
+  opacity: 1;
+  transition: opacity 0.2s;
+
+  &:hover,
+  &:focus {
+    opacity: 0.6;
+  }
+
+  &:active {
+    opacity: 0.3;
+  }
+
+  border-bottom: 1px solid map-get($theme-colors, 'accent');
+  font-size: $main-font-size !important;
+  line-height: $secondary-line-height;
+  font-weight: map-get($font-weights, 'semi-bold');
+}
+
+.reg-btn {
+  font-size: $main-font-size;
+  line-height: $secondary-line-height;
+  font-weight: map-get($font-weights, 'semi-bold');
+}
+
 .hintCard {
+  width: 220px;
   position: absolute;
   right: 10%;
   top: -35%;
