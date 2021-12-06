@@ -11,9 +11,9 @@ body {
   font-family: $main-font-family !important;
   color: map-get($theme-colors, 'white') !important;
 
-  background-color: map-get($theme-colors, 'accent') !important;
+  // background-color: map-get($theme-colors, 'accent') !important;
 
-  overflow-x: scroll;
+  // overflow-x: scroll;
 }
 
 .v-application {

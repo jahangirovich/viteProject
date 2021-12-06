@@ -2,24 +2,30 @@
   <v-app>
     <v-main class="auth main accent">
       <v-container fluid class="px-0 py-0">
-        <div class="content-list">
-          <div class="content-item text-center pt-6">
+        <div class="content-list pl-md-13">
+          <div class="content-item pt-6">
             <v-img
               :src="require('@/assets/img/auth/cowmas_logo.svg')"
               width="141px"
               height="74px"
-              class="ma-auto mb-4"
+              class="ma-auto mb-4 ml-md-0"
             >
             </v-img>
             <div
-              class="logo-text font-weight-regular white--text text-center mb-4"
+              class="
+                logo-text
+                font-weight-regular
+                white--text
+                text-center text-md-left
+                mb-4
+              "
               v-html="$t('auth.header_description')"
             ></div>
           </div>
           <div class="content-item" v-show="$vuetify.breakpoint.mdAndUp">
             <v-img :src="require('@/assets/img/auth/cowmasBanner.png')"></v-img>
           </div>
-          <div class="content-item">
+          <div class="content-item d-md-flex justify-md-center align-md-center">
             <v-card class="rounded-lg shadow-md overflow-hidden">
               <v-tabs height="auto" v-model="model" centered fixed-tabs>
                 <v-tabs-slider class="accent"></v-tabs-slider>
@@ -49,8 +55,9 @@
               d-flex
               flex-column
               justify-start
-              align-center
+              align-center align-md-start
               pt-10
+              pb-5 pb-md-10
               content-item
               text-center
             "
@@ -165,6 +172,11 @@ export default defineComponent({
 }
 
 @media #{map-get($display-breakpoints, 'md-and-up')} {
+  .footer-title::before {
+    left: 0;
+    margin-left: 0;
+  }
+
   .content-list {
     grid-template-columns: 38% 1fr;
     grid-template-rows: 290px 1fr auto;
