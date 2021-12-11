@@ -1,0 +1,67 @@
+html,
+body {
+  min-width: 320px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+
+  font-style: normal !important;
+  font-size: $main-font-size !important;
+  line-height: $main-line-height !important;
+  font-weight: $main-font-weight !important;
+  font-family: $main-font-family !important;
+  color: map-get($theme-colors, 'white') !important;
+
+  // background-color: map-get($theme-colors, 'accent') !important;
+
+  // overflow-x: scroll;
+}
+
+.v-application {
+  margin: 0 !important;
+  padding: 0 !important;
+
+  font-style: normal !important;
+  font-size: $main-font-size !important;
+  line-height: $main-line-height !important;
+  font-weight: $main-font-weight !important;
+  font-family: $main-font-family !important;
+  color: map-get($theme-colors, 'white') !important;
+
+  background-color: map-get($theme-colors, 'accent') !important;
+}
+
+.v-application img {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+}
+
+.v-application  a {
+  text-decoration: none !important;
+}
+
+html {
+  box-sizing: border-box !important;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit !important;
+}
+
+// НЕОБХОДИМО СДЕЛАТЬ РЕФАКТОРИНГ
+.theme--light.v-tabs > .v-tabs-bar{
+  background-color: transparent;
+}
+
+// НЕОБХОДИМО СДЕЛАТЬ РЕФАКТОРИНГ
+.v-application--is-ltr .v-input__prepend-outer {
+  margin-right: 0 !important;
+}
+
+// НЕОБХОДИМО СДЕЛАТЬ РЕФАКТОРИНГ
+.v-breadcrumbs__item {
+  font-size: 12px !important;
+  color: map-get($theme-colors, 'gray_secondary' ) !important
+}

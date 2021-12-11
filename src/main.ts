@@ -7,7 +7,7 @@ import vuetify from './plugins/vuetify'
 import './plugins/vuelidate'
 import './plugins/composition-api'
 // import 'windi.css'
-import './styles/main.scss'
+import './styles/style.scss'
 import './global-components'
 
 Vue.config.productionTip = false

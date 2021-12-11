@@ -1,6 +1,6 @@
 <template>
-  <v-form class="mx-4 my-6" method="post" @submit="authLogin">
-    <div class="mb-6">
+  <v-form class="mx-4 my-6">
+    <div class="mb-4">
       <v-text-field
         color="accent"
         label="Email"
@@ -10,7 +10,7 @@
         hide-details="auto"
       />
     </div>
-    <div class="mb-5">
+    <div class="mb-6">
       <v-text-field
         color="accent"
         class="border-gray_secondary"
@@ -26,16 +26,19 @@
     </div>
     <v-btn
       type="submit"
-      class="normal-case font-600 white--text rounded-lg"
+      class="normal-case login-btn white--text rounded-lg"
       large
       color="accent"
       depressed
       width="100%"
+      min-height="48px"
     >
-      Войти
+      {{ $t('login.login') }}
     </v-btn>
-    <div class="text-decoration-underline text--accent mt-6 text-center">
-      <router-link to="/" class="accent--text text-body-2"> Забыли пароль? </router-link>
+    <div class="text--accent mt-6 text-center">
+      <router-link to="/" class="accent--text forgot-password-link"
+        >{{ $t('login.forgot_password') }}
+      </router-link>
     </div>
   </v-form>
 </template>
@@ -79,3 +82,29 @@ export default {
   },
 }
 </script>
+<style lang="scss" scoped>
+@import '../../styles/variables';
+.login-btn {
+  font-size: $main-font-size;
+  line-height: $secondary-line-height;
+  font-weight: map-get($font-weights, 'semi-bold');
+}
+.forgot-password-link {
+  opacity: 1;
+  transition: opacity 0.2s;
+
+  &:hover,
+  &:focus {
+    opacity: 0.6;
+  }
+
+  &:active {
+    opacity: 0.3;
+  }
+
+  border-bottom: 1px solid map-get($theme-colors, 'accent');
+  font-size: $main-font-size;
+  line-height: $secondary-line-height;
+  font-weight: map-get($font-weights, 'semi-bold');
+}
+</style>

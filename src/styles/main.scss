@@ -4,7 +4,6 @@
   --color-black: #000;
   --color-white: #fff;
 
-
   --color-accent: #197DD9;
 
   --color-bg2: #EFF8FF;
@@ -50,6 +49,7 @@
   --shadow-menu: 0px 4px 12px rgba(0, 0, 0, 0.12);
   --shadow-body: 0px 2px 8px rgba(15, 66, 101, 0.08);
 }
+
 .v-breadcrumbs li:nth-child(even) {
   padding: 0;
 }
@@ -81,10 +81,6 @@
 .widthAuto{
   min-width: auto !important;
   width: auto !important;
-}
-
-*{
-  font-size: var(--font-size-sm);
 }
 
 //@at-root
