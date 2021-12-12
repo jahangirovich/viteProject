@@ -228,9 +228,15 @@ export const development = () => {
     return {
       headers,
       items,
+      disableFooter: true,
     }
   }
   return {
     table,
   }
+}
+
+// posterity page items
+export const posterity = () => {
+  return {}
 }

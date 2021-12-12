@@ -18,6 +18,7 @@
           class="elevation-table"
           color="black"
           item-class="black"
+          :hide-default-footer="table.disableFooter ? table.disableFooter : false"
           :footer-props="{
             showFirstLastPage: true,
             prevIcon: $options.icons.mdiChevronLeft,
