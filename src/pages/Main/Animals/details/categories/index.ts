@@ -7,6 +7,7 @@ import {
   mdiHomeVariant,
 } from '@mdi/js'
 
+// profile items
 export const profile = () => {
   const panelItems = [
     {
@@ -153,6 +154,7 @@ export const profile = () => {
   }
 }
 
+// descent page items
 export const descent = () => {
   const cards = [
     {
@@ -188,5 +190,47 @@ export const descent = () => {
   ]
   return {
     cards,
+  }
+}
+
+// development page items
+export const development = () => {
+  const table = () => {
+    type developmentTableType = {
+      indicator: string
+      weight: number
+      height: number
+      user: string
+      data: string
+    }
+    const items: developmentTableType[] = []
+    const headers = [
+      {
+        text: 'Показатель',
+        align: 'start',
+        sortable: false,
+        value: 'indicator',
+      },
+      { text: 'Вес, кг', value: 'weight' },
+      { text: 'Рост, см', value: 'height' },
+      { text: 'Пользователь', value: 'user' },
+      { text: 'Дата', value: 'data' },
+    ]
+    for (let x = 0; x < 10; x++) {
+      items.push({
+        indicator: 'При рождении',
+        weight: 23,
+        height: 150,
+        user: 'Фамилия Имя Отчество',
+        data: '07.11.2020',
+      })
+    }
+    return {
+      headers,
+      items,
+    }
+  }
+  return {
+    table,
   }
 }
