@@ -21,24 +21,100 @@
     </div>
     <div class="d-flex justify-content-between">
       <v-card elevation="0" width="50%" class="mr-4 transparent">
-        <v-expansion-panels multiple flat accordion>
+        <v-expansion-panels multiple flat accordion v-model="expandedPanels">
           <v-expansion-panel>
             <v-expansion-panel-header class="px-4">
               <h4 class="text-body-2 font-weight-bold">Мать</h4>
             </v-expansion-panel-header>
-            <!-- <v-divider></v-divider> -->
-            <v-expansion-panel-content class="mt-2">sadas </v-expansion-panel-content>
+            <v-divider></v-divider>
+            <v-expansion-panel-content class="mt-2">
+              <div>
+                <div>
+                  <v-img
+                    :src="require('@/assets/main/animals/profile/cowProfileImg.png')"
+                    width="108px"
+                    height="108px"
+                    contain
+                  />
+                  <h4 class="my-2">
+                    <router-link
+                      to="/home/stalls"
+                      class="
+                        accent--text
+                        text-h6
+                        font-weight-bold
+                        text-decoration-underline
+                      "
+                      >AST_012123</router-link
+                    >
+                  </h4>
+                  <StatusBadge :status="'На ферме'" />
+                  <v-icon small class="ml-1">
+                    {{ mdiInformationOutline }}
+                  </v-icon>
+                </div>
+                <div class="mt-2">
+                  <div class="mb-2">
+                    <LabelWithInfo type="Порода" value="Галловейский, племенной" />
+                  </div>
+                  <div class="mb-2">
+                    <LabelWithInfo type="Категория" value="Значение" />
+                  </div>
+                  <div>
+                    <LabelWithInfo type="Кличка" value="Текст" />
+                  </div>
+                </div>
+              </div>
+            </v-expansion-panel-content>
           </v-expansion-panel>
         </v-expansion-panels>
       </v-card>
       <v-card elevation="0" width="50%" class="transparent">
-        <v-expansion-panels multiple accordion flat>
+        <v-expansion-panels multiple accordion flat v-model="expandedPanels">
           <v-expansion-panel>
             <v-expansion-panel-header class="px-4">
               <h4 class="text-body-2 font-weight-bold">Отец</h4>
             </v-expansion-panel-header>
             <v-divider></v-divider>
-            <v-expansion-panel-content class="mt-2">asdasd </v-expansion-panel-content>
+            <v-expansion-panel-content class="mt-2">
+              <div>
+                <div>
+                  <v-img
+                    :src="require('@/assets/main/animals/profile/animalPlaceholder.png')"
+                    width="108px"
+                    height="108px"
+                    contain
+                  />
+                  <h4 class="my-2">
+                    <router-link
+                      to="/home/stalls"
+                      class="
+                        accent--text
+                        text-h6
+                        font-weight-bold
+                        text-decoration-underline
+                      "
+                      >AST_012123</router-link
+                    >
+                  </h4>
+                  <StatusBadge :status="'На ферме'" />
+                  <v-icon small class="ml-1">
+                    {{ mdiInformationOutline }}
+                  </v-icon>
+                </div>
+                <div class="mt-2">
+                  <div class="mb-2">
+                    <LabelWithInfo type="Порода" value="Галловейский, племенной" />
+                  </div>
+                  <div class="mb-2">
+                    <LabelWithInfo type="Категория" value="Значение" />
+                  </div>
+                  <div>
+                    <LabelWithInfo type="Кличка" value="Текст" />
+                  </div>
+                </div>
+              </div>
+            </v-expansion-panel-content>
           </v-expansion-panel>
         </v-expansion-panels>
       </v-card>
@@ -47,13 +123,18 @@
 </template>
 <script>
 import { descent } from './index'
+import { mdiInformationOutline } from '@mdi/js'
+import { ref } from '@vue/composition-api'
 export default {
   name: 'DescentDetailProfile',
   setup() {
     const decent = descent()
     const cards = decent.cards
+    const expandedPanels = ref(Array.from({ length: 2 }, (v, k) => k))
     return {
       cards,
+      mdiInformationOutline,
+      expandedPanels,
     }
   },
   data() {
