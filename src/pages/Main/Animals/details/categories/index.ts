@@ -240,3 +240,39 @@ export const development = () => {
 export const posterity = () => {
   return {}
 }
+
+// reproduction page items
+export const reproduction = () => {
+  const table = () => {
+    type developmentTableType = {
+      dateFirst: string
+      dateSecond: string
+      mark: string
+    }
+    const items: developmentTableType[] = []
+    const headers = [
+      {
+        text: 'Дата случки',
+        align: 'start',
+        value: 'dateFirst',
+      },
+      { text: 'Дата отела', value: 'dateSecond' },
+      { text: 'Оценка легкости отела', value: 'mark' },
+    ]
+    for (let x = 0; x < 10; x++) {
+      items.push({
+        dateFirst: '07.11.2020',
+        dateSecond: '07.11.2020',
+        mark: 'Незначительные трудности, некоторая помощь',
+      })
+    }
+    return {
+      headers,
+      items,
+      disableFooter: true,
+    }
+  }
+  return {
+    table,
+  }
+}
