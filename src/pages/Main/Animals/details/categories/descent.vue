@@ -13,7 +13,7 @@
             {{ item.img }}
           </v-icon>
         </v-btn>
-        <div class="d-flex flex-column ml-4 text-body-2">
+        <div class="d-flex flex-column ml-4 text-body-1">
           <span class="gray_secondary--text">{{ item.title }}</span>
           <span class="font-weight-bold">{{ item.info }}</span>
         </div>
@@ -24,7 +24,7 @@
         <v-expansion-panels multiple flat accordion v-model="expandedPanels">
           <v-expansion-panel>
             <v-expansion-panel-header class="px-4">
-              <h4 class="text-body-2 font-weight-bold">Мать</h4>
+              <h4 class="text-body-1 font-weight-bold">Мать</h4>
             </v-expansion-panel-header>
             <v-divider></v-divider>
             <v-expansion-panel-content class="mt-2">
@@ -73,7 +73,7 @@
         <v-expansion-panels multiple accordion flat v-model="expandedPanels">
           <v-expansion-panel>
             <v-expansion-panel-header class="px-4">
-              <h4 class="text-body-2 font-weight-bold">Отец</h4>
+              <h4 class="text-body-1 font-weight-bold">Отец</h4>
             </v-expansion-panel-header>
             <v-divider></v-divider>
             <v-expansion-panel-content class="mt-2">

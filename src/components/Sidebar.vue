@@ -15,7 +15,7 @@
             height="96"
             class="mx-auto my-4"
           />
-          <h2 class="font-weight-bold mb-4 white--text text-body-2">
+          <h2 class="font-weight-bold mb-4 white--text text-body-1">
             ТОО «Крестьяское <br />
             хозяйство»
           </h2>
@@ -42,7 +42,7 @@
                 <v-list-item-content>
                   <router-link :to="'/home/' + item.url">
                     <v-list-item-title
-                      class="white--text text-body-2"
+                      class="white--text text-body-1"
                       v-text="item.text"
                     ></v-list-item-title>
                   </router-link>
@@ -57,7 +57,7 @@
             width="91px"
             height="48px"
           />
-          <span class="gray_secondary--text text-caption">© 2021 Все права защищены</span>
+          <span class="gray_secondary--text text-body-2">© 2021 Все права защищены</span>
         </div>
       </div>
     </v-navigation-drawer>

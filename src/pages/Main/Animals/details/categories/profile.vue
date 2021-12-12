@@ -23,7 +23,7 @@
                   height="19px"
                 />
               </div>
-              <span class="text-body-2 font-weight-bold">4.6лет</span>
+              <span class="text-body-1 font-weight-bold">4.6лет</span>
             </div>
             <div class="d-flex align-center">
               <div>
@@ -33,7 +33,7 @@
                   height="19px"
                 />
               </div>
-              <span class="text-body-2 font-weight-bold ml-1">44 кг</span>
+              <span class="text-body-1 font-weight-bold ml-1">44 кг</span>
             </div>
             <div class="d-flex align-center">
               <div>
@@ -43,7 +43,7 @@
                   height="19px"
                 />
               </div>
-              <span class="text-body-2 font-weight-bold">150 см</span>
+              <span class="text-body-1 font-weight-bold">150 см</span>
             </div>
           </div>
         </div>
@@ -58,7 +58,7 @@
           :key="i"
         >
           <v-expansion-panel-header class="px-4">
-            <h4 class="text-body-2 font-weight-bold">{{ $t(item.title) }}</h4>
+            <h4 class="text-body-1 font-weight-bold">{{ $t(item.title) }}</h4>
           </v-expansion-panel-header>
           <v-divider v-if="expandedPanels.includes(i)"></v-divider>
           <v-expansion-panel-content class="mt-2" v-if="!item.isDescription">
@@ -67,7 +67,7 @@
           <v-expansion-panel-content v-else class="mt-4">
             <div
               v-html="item.content.text"
-              class="primary--text text-start line-24 text-body-2"
+              class="primary--text text-start line-24 text-body-1"
             ></div>
             <div class="d-flex flex-wrap">
               <div v-for="(obj, x) in item.content.images" :key="x" class="mr-4 mt-4">

@@ -31,6 +31,19 @@ body {
   .elevation-1{
     box-shadow: $main-box-shadow !important; 
   }
+  .elevation-table{
+    box-shadow: $table-box-shadow !important;
+  }
+  .v-data-table {
+    table{
+      tr{
+        th,td{
+          font-size: $main-font-size !important;
+          color: var(--color-primary) !important;
+        }
+      }
+    }
+  }
 }
 
 .v-application img {
@@ -45,6 +58,7 @@ body {
 
 html {
   box-sizing: border-box !important;
+  font-size: 14px !important;
 }
 
 *,

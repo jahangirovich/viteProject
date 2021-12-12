@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ListComponent :table="table" />
+    <GeneralListComponent :table="table" />
   </div>
 </template>
 <script>

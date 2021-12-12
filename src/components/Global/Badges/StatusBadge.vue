@@ -7,7 +7,7 @@
     height="20px"
     depressed
   >
-    <span class="text-caption">{{ status }}</span>
+    <span class="text-body-2">{{ status }}</span>
   </v-btn>
 </template>
 

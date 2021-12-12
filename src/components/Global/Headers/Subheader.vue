@@ -57,7 +57,7 @@
             ($route.name === item.link_name ? ' accent--text' : ' gray_secondary--text')
           "
         >
-          <span class="font-weight-bold text-body-2">{{ item.name }}</span>
+          <span class="font-weight-bold text-body-1">{{ item.name }}</span>
         </v-tab>
       </v-tabs>
       <v-tabs-items v-model="model">

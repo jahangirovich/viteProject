@@ -4,10 +4,10 @@
       <div class="d-flex py-3">
         <v-row>
           <v-col md="3">
-            <span class="text-body-2">{{ item.type }}</span>
+            <span class="text-body-1">{{ item.type }}</span>
           </v-col>
           <v-col>
-            <span class="font-weight-bold text-body-2">{{ item.value }}</span>
+            <span class="font-weight-bold text-body-1">{{ item.value }}</span>
           </v-col>
         </v-row>
       </div>

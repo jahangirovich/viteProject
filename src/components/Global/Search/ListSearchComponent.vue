@@ -11,7 +11,7 @@
         name="search"
         color="accent"
         dense
-        class="text-body-2 rounded-lg white"
+        class="text-body-1 rounded-lg white"
         :prepend-inner-icon="options.icons.mdiMagnify"
       >
         <!-- 
@@ -50,7 +50,7 @@
                   hide-details="auto"
                   outlined
                   multiple
-                  class="text-body-2"
+                  class="text-body-1"
                   :items="filterItems.filterDropDownItems"
                   :label="item.name"
                   v-model="filterItems.selectedFilters[i]"

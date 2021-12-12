@@ -5,14 +5,14 @@
         <v-list-item-content>
           <v-list-item-title
             v-text="folder.title"
-            class="font-weight-bold text-body-2"
+            class="font-weight-bold text-body-1"
           ></v-list-item-title>
 
           <v-list-item-subtitle
             v-text="folder.subtitle"
-            class="text-body-2 gray_secondary--text my-1"
+            class="text-body-1 gray_secondary--text my-1"
           ></v-list-item-subtitle>
-          <span class="text-body-2 gray_secondary--text">{{ folder.text }}</span>
+          <span class="text-body-1 gray_secondary--text">{{ folder.text }}</span>
         </v-list-item-content>
 
         <v-list-item-action>

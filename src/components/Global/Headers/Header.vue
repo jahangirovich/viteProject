@@ -19,7 +19,7 @@
     </v-breadcrumbs>
     <div class="d-flex align-center">
       <v-badge :content="'1'" :value="'1'" color="accent" class="mr-7" overlap>
-        <v-btn icon class="mr-1 pa-1 text-body-2">
+        <v-btn icon class="mr-1 pa-1 text-body-1">
           <v-img :src="require('@/assets/main/header/notification.svg')" />
         </v-btn>
       </v-badge>
@@ -31,8 +31,8 @@
                 <img src="@/assets/main/other/userProfile.png" alt="John" />
               </v-avatar>
               <div class="d-flex flex-column ml-3 mr-2">
-                <h3 class="text-body-2 font-weight-bold">Фамилия Имя</h3>
-                <span class="gray_secondary--text text-caption">Администратор</span>
+                <h3 class="text-body-1 font-weight-bold">Фамилия Имя</h3>
+                <span class="gray_secondary--text text-body-2">Администратор</span>
               </div>
               <v-icon>{{ icons.mdiChevronDown }}</v-icon>
             </div>
