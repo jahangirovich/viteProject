@@ -9,7 +9,7 @@ body {
   line-height: $main-line-height !important;
   font-weight: $main-font-weight !important;
   font-family: $main-font-family !important;
-  color: map-get($theme-colors, 'white') !important;
+  color: map-get($theme-colors, 'primary') !important;
 
   // background-color: map-get($theme-colors, 'accent') !important;
 
@@ -25,7 +25,7 @@ body {
   line-height: $main-line-height !important;
   font-weight: $main-font-weight !important;
   font-family: $main-font-family !important;
-  color: map-get($theme-colors, 'white') !important;
+  color: map-get($theme-colors, 'primary') !important;
 
   background-color: map-get($theme-colors, 'accent') !important;
 }
@@ -36,7 +36,7 @@ body {
   height: auto !important;
 }
 
-.v-application  a {
+.v-application a {
   text-decoration: none !important;
 }
 
@@ -51,7 +51,7 @@ html {
 }
 
 // НЕОБХОДИМО СДЕЛАТЬ РЕФАКТОРИНГ
-.theme--light.v-tabs > .v-tabs-bar{
+.theme--light.v-tabs > .v-tabs-bar {
   background-color: transparent;
 }
 
@@ -63,5 +63,19 @@ html {
 // НЕОБХОДИМО СДЕЛАТЬ РЕФАКТОРИНГ
 .v-breadcrumbs__item {
   font-size: 12px !important;
-  color: map-get($theme-colors, 'gray_secondary' ) !important
+  color: map-get($theme-colors, 'gray_secondary') !important;
+}
+
+.v-expansion-panels {
+  .v-expansion-panel::before {
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.12) !important;
+  }
+  .v-expansion-panel-content {
+    &__wrap {
+      padding: 0 16px 16px !important;
+    }
+  }
+  .v-expansion-panel--active > .v-expansion-panel-header {
+    min-height: 56px;
+  }
 }
