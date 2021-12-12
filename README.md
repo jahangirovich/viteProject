@@ -1,5 +1,22 @@
 # cowmas vue-2 web repo
 
+# components
+- Badges 
+  - StatusBadge shows status of cow like `на заводе`
+- Headers
+  - Header has breadcrumb and user profile description
+  - Subheader shows current page title 
+- Helpers
+  - Bridge to make bridge between pages , this is disable name of component being in breadcrumb lists and make bridge between nested pages
+  - Property shows info with type and value of like -> Name - Cow123
+  - PropertyWithLine same as Property
+- LabelWithInfo * should be refactored in the future
+
+- Lists
+  - ListAreas list for user areas in profile
+  - GeneralList has general table without any functionality
+  - ListComponent table with functionality
+
 # Enabled Vue CLI plugins
 * Babel
 * Typescript
