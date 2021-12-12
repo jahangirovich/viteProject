@@ -10,19 +10,39 @@
           link_name: 'animal_profile',
         },
         {
-          name: 'Здоровье',
-          link: 'health',
-          link_name: 'animal_groups',
+          name: 'Происхождение',
+          link: 'descent',
+          link_name: 'descent_profile',
         },
         {
-          name: 'вакцинация',
-          link: 'vacination',
-          link_name: 'vacination',
+          name: 'Развитие',
+          link: 'development',
+          link_name: 'development_profile',
         },
         {
-          name: 'Медицинское лечение',
+          name: 'Потомство',
+          link: 'posterity',
+          link_name: 'posterity_profile',
+        },
+        {
+          name: 'Стельность',
+          link: 'pregnancy',
+          link_name: 'pregnancy_profile',
+        },
+        {
+          name: 'Репродукция',
+          link: 'reproduction',
+          link_name: 'reproduction_profile',
+        },
+        {
+          name: 'Диагностика',
+          link: 'analyze',
+          link_name: 'analyze_profile',
+        },
+        {
+          name: 'Лечение и вакцинация',
           link: 'med_health',
-          link_name: 'med_health',
+          link_name: 'med_health_profile',
         },
       ]"
     />
