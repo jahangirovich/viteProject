@@ -4,17 +4,17 @@
   --color-black: #000;
   --color-white: #fff;
 
-  --color-accent: #197DD9;
+  --color-accent: #197dd9;
 
-  --color-bg2: #EFF8FF;
-  --color-borders: #E7E7E7;
+  --color-bg2: #eff8ff;
+  --color-borders: #e7e7e7;
 
   --color-gray: #8e8e93;
   --color-gray-dark: #5e6269;
   --color-gray-light: #a8a8ac;
   --color-gray-icon: #ced0d6;
 
-  --color-primary:  #051F37;
+  --color-primary: #051f37;
   --color-primary-dark: #166f5d;
   --color-primary-light: #63bcaa;
 
@@ -25,13 +25,13 @@
   --color-border-light-gray: #e1e1e1;
 
   --color-bg: #f1f1f1;
-  --color-BG: #EFF8FF;
+  --color-BG: #eff8ff;
   --color-bg-light: #f8f8f8;
 
   --color-success: #00c2b7;
   --color-error: #ff4d4f;
   --color-warn: #ffc000;
-  --color-warn-light: #FEF4D7;
+  --color-warn-light: #fef4d7;
 
   --color-placeholders: #8b919c;
   --color-line: #d3d6dc;
@@ -55,20 +55,20 @@
 }
 
 // add gray color of slider tabs of auth
-.v-slide-group__content{
-  &:after{
-      content: "";
-      position: absolute;
-      left: 0;
-      width: 100%;
-      height: 2px;
-      background-color: var(--color-borders);
-      bottom: 0
+.v-slide-group__content {
+  &:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-borders);
+    bottom: 0;
   }
 }
 
 // width of sort by modal
-.sortByWidth{
+.sortByWidth {
   width: 335px;
 
   // customize adaptive
@@ -78,17 +78,48 @@
 }
 
 // setting min-width auto
-.widthAuto{
+.widthAuto {
   min-width: auto !important;
   width: auto !important;
 }
 
 //@at-root
 .theme--light.v-data-table tbody tr.v-data-table__selected {
-  background: var(--color-BG)
+  background: var(--color-BG);
 }
 
 // turning of uppercase in btn
-.v-btn{
+.v-btn {
   text-transform: none;
+}
+
+// removing box shadow
+.v-data-table > .v-data-table__wrapper tbody {
+  tr.v-data-table__expanded__content {
+    padding: 0;
+    box-shadow: none;
+    td{
+      background-color: var(--color-bg2);
+      padding: 0;
+      table{
+        width: 100%;
+        border-spacing: 0;
+        td{
+          border-bottom: thin solid rgba(0, 0, 0, 0.12);
+        }
+      }
+    }
+  }
+  .disableBorder{
+    border-bottom: 0 !important;
+  }
+  tr.v-data-table__expanded__row {
+    background-color: var(--color-bg2);
+    td {
+      &:first-child {
+        border-color: transparent !important;
+        border-bottom: none;
+      }
+    }
+  }
 }

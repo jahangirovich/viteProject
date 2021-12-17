@@ -29,14 +29,14 @@
         {{ title }}
       </div>
       <div class="btns d-flex align-center">
-        <v-btn depressed small class="text-none accent--text" color="transparent">
+        <v-btn depressed class="text-none accent--text" color="transparent">
           <v-icon class="mr-2">
             {{ mdiPencil }}
           </v-icon>
           Редактировать
         </v-btn>
         <v-divider vertical class="px-1"></v-divider>
-        <v-btn small class="text-none ml-0 error--text" color="transparent" depressed>
+        <v-btn class="text-none ml-0 error--text" color="transparent" depressed>
           <v-icon>
             {{ mdiDeleteOutline }}
           </v-icon>
