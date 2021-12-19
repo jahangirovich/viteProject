@@ -1,6 +1,6 @@
 <template>
   <div class="d-flex justify-content-between analyze flex-wrap">
-    <v-card elevation="0" width="49%" class="mr-4 transparent mb-2 elevation-card">
+    <v-card elevation="0" width="49%" class="mr-4 transparent mb-2 elevation-table">
       <v-expansion-panels multiple flat accordion v-model="expandedPanels">
         <v-expansion-panel>
           <v-expansion-panel-header class="px-4">

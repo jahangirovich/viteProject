@@ -100,3 +100,13 @@ html {
 .line-24 {
   line-height: $secondary-line-height;
 }
+
+// set custom label font-size
+.v-label{
+  font-size: $main-font-size;
+}
+
+.v-text-field__suffix{
+  font-size: $main-font-size;
+  color: var(--color-gray)
+}
